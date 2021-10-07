@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1 Tema 3</title>
+</head>
+
+<body>
+
+    <p id="p1"></p>
+    <p id="p2"></p>
+    <p id="p3"></p>
+    <p id="p4"></p>
+    <p id="p5"></p>
+
+    <script>
+        let nombre = prompt("Nombre");
+        let aps = prompt("Apellidos");
+        let dir = prompt("Dirección");
+        let tlf = prompt("Teléfono");
+        let dni = prompt("DNI");
+
+        alert(nombre);
+        alert(aps);
+        alert(dir);
+        alert(tlf);
+        alert(dni);
+
+        document.write(nombre + "<br>");
+        document.write(aps + "<br>");
+        document.write(dir + "<br>");
+        document.write(tlf + "<br>");
+        document.write(dni + "<br>");
+
+        document.getElementById("p1").innerHTML = nombre;
+        document.getElementById("p2").innerHTML = aps;
+        document.getElementById("p3").innerHTML = dir;
+        document.getElementById("p4").innerHTML = tlf;
+        document.getElementById("p5").innerHTML = dni;
+
+        console.log(nombre);
+        console.log(aps);
+        console.log(dir);
+        console.log(tlf);
+        console.log(dni);
+    </script>
+</body>
+
+</html>
