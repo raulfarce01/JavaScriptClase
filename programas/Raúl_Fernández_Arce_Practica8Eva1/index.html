@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Aleatorio</title>
+
+    <style>
+        /*#capa {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgb(200, 124, 3);
+        }*/
+    </style>
+</head>
+
+<body>
+
+    <div id="capa" style="height: 100%; width: 100%;">Cambia</div>
+
+    <script>
+        let color1 = 0;
+        let color2 = 0;
+        let color3 = 0;
+
+        let color1 = parseInt(Math.random() * 255);
+        let color2 = parseInt(Math.random() * 255);
+        let color3 = parseInt(Math.random() * 255);
+
+        //document.write("<div style='background-color: rgb(" + color1 + "," + color2 + "," + color3 + "); width='100%' height='100%'></div>")
+        //document.getElementById('capa').style.backgroundColor = 'rgb(color1, color2, color3)';
+        document.write("<div position: fixed; left: 0; top: 0; width: 100%; height: 100%; background-color: rgb(color1, color2, color3)");
+    </script>
+
+</body>
+
+</html>
