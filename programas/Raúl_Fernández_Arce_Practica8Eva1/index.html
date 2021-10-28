@@ -8,19 +8,19 @@
     <title>Color Aleatorio</title>
 
     <style>
-        #capa {
+        /*div {
             position: fixed;
             left: 0;
             top: 0;
             width: 100%;
             height: 100%;
-        }
+        }*/
     </style>
 </head>
 
 <body>
 
-    <div id="capa" style="height: 100%; width: 100%;">Cambia</div>
+    <!--<div id="capa" style="height: 100%; width: 100%;">Cambia</div>-->
 
     <script>
         var color1 = parseInt(Math.random() * 255);
@@ -28,9 +28,8 @@
         var color3 = parseInt(Math.random() * 255);
 
 
-        //document.write("<div style='background-color: rgb(" + color1 + "," + color2 + "," + color3 + "); width='100%' height='100%'></div>")
-        document.getElementById("capa").innerHTML("<div style='position: fixed; height: 100%; width:100%; top: 0; left: 0; background-color: rgb(color1, color2, color3)'");
-        //document.write(`<div style='position: fixed; left: 0; top: 0; width: 100%; height: 100%; background-color: rgb(${color1}, ${color2}, ${color3}')</div>`);
+        document.write(`<div style='position: fixed; left: 0; top: 0; width: 100%; height: 100%; background-color: rgb(${color1}, ${color2}, ${color3}');></div>`);
+        //document.write(`<div style='background-color: rgb(${color1}, ${color2}, ${color3}');></div>`);
     </script>
 
 </body>

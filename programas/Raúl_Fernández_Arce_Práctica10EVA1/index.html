@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Aleatorio</title>
+
+    <style>
+        /*div {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+        }*/
+    </style>
+</head>
+
+<body>
+
+    <!--<div id="capa" style="height: 100%; width: 100%;">Cambia</div>-->
+
+    <script>
+        for (let i = 0; i < 2000; i++) {
+            var color1 = parseInt(Math.random() * 255);
+            var color2 = parseInt(Math.random() * 255);
+            var color3 = parseInt(Math.random() * 255);
+
+            var var1 = parseInt(Math.random() * 101);
+            var var2 = parseInt(Math.random() * 101);
+
+            //console.log("arriba: " + var1);
+            //console.log("izquierda: " + var2);
+            //console.log("color1: " + color1);
+            //console.log("color2: " + color2);
+            //console.log("color3: " + color3);
+
+
+            document.write(`<div style='position: fixed; left: ${var2}%; top: ${var1}%; width: 50px; height: 50px; background-color: rgb(${color1}, ${color2}, ${color3}');></div>`);
+            //document.write(`<div style='background-color: rgb(${color1}, ${color2}, ${color3}');></div>`);
+        }
+    </script>
+
+</body>
+
+</html>

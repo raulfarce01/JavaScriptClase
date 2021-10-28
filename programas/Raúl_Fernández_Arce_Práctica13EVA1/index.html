@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cifrado César</title>
+</head>
+
+<body>
+
+    <script>
+        var num = 0;
+        var frase = "";
+
+        var fraseNueva = "";
+        var suma = 0;
+
+        while (num < 1 || num > 100) {
+
+            num = prompt("Escribe el valor de cifrado entre 1-100");
+
+        }
+        while (frase.valueOf() == "") {
+
+            frase = prompt("Escribe la cadena a descifrar");
+
+        }
+
+        for (i = 0; i < frase.length; i++) {
+
+            //frase.charCodeAt(i) = parseInt(frase.charCodeAt(i)) + parseInt(num);
+            console.log(frase.charCodeAt(i));
+            console.log(parseInt(frase.charCodeAt(i)) + parseInt(num));
+
+            fraseNueva += String.fromCharCode(frase.charCodeAt(i) + num);
+        }
+
+        console.log(frase);
+
+        alert("La cadena descifrada es... " + fraseNueva);
+    </script>
+
+</body>
+
+</html>
