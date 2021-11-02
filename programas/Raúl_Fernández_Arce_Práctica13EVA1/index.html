@@ -30,14 +30,17 @@
 
         for (i = 0; i < frase.length; i++) {
 
+            //En este for lo que hacemos es crear la frase sumando el valor que nos ha dado en su caracter unicode
+
             //frase.charCodeAt(i) = parseInt(frase.charCodeAt(i)) + parseInt(num);
             console.log(frase.charCodeAt(i));
             console.log(parseInt(frase.charCodeAt(i)) + parseInt(num));
 
-            fraseNueva += String.fromCharCode(frase.charCodeAt(i) + num);
+            fraseNueva += String.fromCharCode(frase.charCodeAt(i) + parseInt(num));
+            //fraseNueva = String.fromCharCode(fraseNueva);
         }
 
-        console.log(frase);
+        //console.log(frase);
 
         alert("La cadena descifrada es... " + fraseNueva);
     </script>
