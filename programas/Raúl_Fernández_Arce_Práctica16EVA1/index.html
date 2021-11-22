@@ -6,13 +6,189 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Batalla Naval</title>
+
+    <style>
+        td {
+            width: 50pt;
+            height: 50pt;
+            border: 1pt solid black;
+            background-color: aqua;
+        }
+        /*p {
+            text-align: center;
+        }*/
+    </style>
 </head>
 
 <body>
 
     <script>
+        var barco = true;
+        var posBarco = [];
+        var long = [];
+
+        document.write("<table>");
+
+        for (let i = 0; i < 6; i++) {
+
+            porBarco[i] = parseInt(Math.random() * 1 + 10);
+
+        }
+
+        for (let i = 0; i < 6; i++) {
+
+            long[i] = parseInt(Math.random() * 1 + 10);
+
+        }
+
+        //Siendo i las filas
+        for (let i = 0; i < 10; i++) {
+
+            document.write("<tr>");
+
+            //Siendo j las columnas
+            for (let j = 0; j < 10; j++) {
+
+
+
+            }
+
+            document.write("<tr>");
+        }
+
+        document.write("</table>");
+
+        function pintaBarco(inicio, longX, longY) {
+
+            document.write("<td style='background-color: black;'></td>")
+
+        }
     </script>
 
+    <p>
+        <table>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </p>
 </body>
 
 </html>
