@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Batalla Naval</title>
+
+    <style>
+        td {
+            width: 50pt;
+            height: 50pt;
+            border: 1pt solid black;
+            background-color: aqua;
+        }
+        /*p {
+            text-align: center;
+        }*/
+    </style>
+</head>
+
+<body>
+
+    <script>
+        barcoX = new Array();
+        barcoY = new Array();
+        dir = new Array();
+
+        document.write("<table>");
+
+        for (i = 0; i < 6; i++) {
+
+            barcoX[i] = parseInt(Math.random() * 10);
+            barcoY[i] = parseInt(Math.random() * 10);
+            //0 para derecha
+            //1 para abajo
+            dir[i] = parseInt(Math.random() * 2);
+
+            for (i = 0; i < 6; i++) {
+                for (j = 0; j < 6; j++) {
+                    if (i != j) {
+                        if (barcoX[i] == barcoX[j] || barcoX[i]++ == barcoX[j]) {
+
+                            dir[i] = parseInt(Math.random() * 2);
+
+                        }
+                    }
+                }
+            }
+
+            console.log("Hola");
+
+            for (x = 0; x < 10; x++) {
+
+                document.write("<tr>");
+
+                for (y = 0; y < 10; y++) {
+
+                    for (i = 0; i < 6; i++) {
+
+                        if (barcoX[i] == x) {
+
+                            console.log("IfX");
+
+                            for (j = 0; j < 6; j++) {
+
+                                if (barcoY[j] == y) {
+
+                                    console.log("IfY");
+
+                                    document.write("<td style='background color: black;'></td>");
+
+                                } else {
+
+                                    document.write("<td></td>");
+
+                                }
+
+                            }
+
+                        } else {
+
+                            document.write("<td></td>");
+
+
+                        }
+
+                    }
+
+                }
+
+                document.write("</tr>");
+            }
+
+        }
+
+
+        document.write("</table>");
+    </script>
+
+</body>
+
+</html>
