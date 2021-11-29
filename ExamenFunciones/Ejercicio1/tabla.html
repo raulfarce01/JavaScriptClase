@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tablas Examen</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        table {
+            width: 100vw;
+            height: 100vh;
+            border: 1px solid black;
+        }
+        
+        td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+
+    <script>
+        introFilaCol();
+
+        function introFilaCol() {
+
+            do {
+
+                //Pedimos las filas
+                var row = prompt("Inserta el número de filas");
+
+                if (row == 0) {
+                    break;
+                }
+
+                //Pedimos las columnas
+                var col = prompt("Inserta el número de columnas");
+
+                if (col == 0) {
+                    break;
+                }
+
+                //Pedimos el color
+                var color = prompt("Inserta el color");
+
+            } while (row < 5 || row > 20 || col < 5 || col > 20);
+
+            //Llamamos a la función creaTabla que pide como argumentos las filas, las columnas y el color, si los dejamos vacíos son
+            //10, 4 y negro respectivamente
+            creaTabla(row, col, color);
+
+        }
+
+
+        function creaTabla(row = 10, col = 4, color = "black") {
+
+            //Comenzamos a dibujar la table y le ponemos borde
+            document.write(`<table style="border: 1px solid ${color}">`);
+
+            for (i = 0; i < row; i++) {
+
+                //Pintamos las filas
+                document.write("<tr>");
+
+                for (j = 0; j < col; j++) {
+
+                    //Dibujamos las celdas
+                    document.write(`<td style="border: 1px solid ${color}"></td>`);
+
+                }
+
+                document.write("</tr>");
+
+            }
+
+            document.write("</table>");
+
+        }
+    </script>
+
+</body>
+
+</html>

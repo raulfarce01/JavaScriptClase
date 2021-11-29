@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Primos</title>
+</head>
+
+<body>
+
+    <script>
+        esPrimo();
+
+        function esPrimo() {
+
+            do {
+
+                //Declaramos la variable primo para comprobar más tarde si un número es o no primo
+                var primo = true;
+
+                //Pedimos al usuario un número
+                var num = prompt("Escribe un número");
+
+                //console.log(num);
+
+                //Recorremos los números desde 2 hasta el insertado por el usuario
+                for (i = 2; i < num; i++) {
+
+                    //Comprobamos que no sea divisible entre sus números predecesores
+                    if (num % i == 0) {
+                        primo = false;
+                    }
+
+                }
+
+                //Si la variable primo ha permanecido true, decimos que el número es primo
+                if (primo) {
+
+                    alert(`El número ${num} es primo`);
+
+
+                } else {
+                    //De lo contrario, decimos que no lo es
+                    alert(`El número ${num} no es primo`);
+                    primo = true;
+
+                }
+
+            } while (num != false || num != null);
+
+        }
+    </script>
+
+</body>
+
+</html>

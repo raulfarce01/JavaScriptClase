@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscaminas</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            text-align: center;
+        }
+        
+        table {
+            margin: auto;
+        }
+        
+        td {
+            border: 1px solid black;
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <script>
+        insertaDatos();
+
+
+        function insertaDatos() {
+
+            do {
+
+                var fil = prompt("Inserta el número de filas");
+
+            } while (fil < 2 || fil == null || fil == "");
+
+
+            do {
+
+                var col = prompt("Inserta el número de columnas");
+
+            } while (col < 2 || col == null || col == "");
+
+            do {
+
+                var min = prompt("Inserta el número de minas");
+
+                if (min >= (fil * col) / 2) {
+
+                    alert(`Debes insertar un número de minas menor que ${(fil*col)/2}`);
+
+                }
+
+            } while (min < 2 || min == null || min == "" || min >= (fil * col) / 2);
+
+            console.log("Termina pedir datos");
+            creaTabla(fil, col, min);
+
+        }
+
+
+
+        function creaTabla(fil, col, min) {
+
+            console.log("Entra creaTabla");
+
+            var minas = celdaAleatoria(fil, col, min);
+
+            document.write("<table>");
+
+            for (i = 0; i < fil; i++) {
+
+                document.write("<tr>");
+
+                for (j = 0; j < col; j++) {
+
+                    if (minas[i][j] == "X") {
+
+                        document.write("<td>*</td>");
+
+                    } else {
+
+                        document.write(`<td></td>`);
+
+                    }
+                    //document.write(`<td></td>`);
+
+                }
+
+                document.write("</tr>");
+
+            }
+
+            document.write("</table>")
+
+        }
+
+
+
+        function celdaAleatoria(fil, col, min) {
+
+
+            console.log("Entra celdaAleatoria");
+
+            const celdaRandom = new Array(fil);
+            const alFila = new Array();
+            const alCol = new Array();
+
+            for (i = 0; i < fil; i++) {
+
+                celdaRandom[i] = new Array(col);
+
+
+            }
+
+            //console.log(celdaRandom);
+
+            for (i = 0; i < min; i++) {
+
+                console.log(celdaRandom.length);
+                console.log(min);
+
+                numAlFila = parseInt(Math.random() * fil) + 1;
+                //alFila[i] = numAlFila;
+                numAlCol = parseInt(Math.random() * col) + 1;
+                //alCol[i] = numAlCol;
+
+                for (j = 0; j < fil; j++) {
+                    for (k = 0; k < col; k++) {
+
+                        if (j == numAlFila) {
+
+                            if (k == numAlCol) {
+
+                                celdaRandom[j][k] = "X";
+
+                            } else {
+
+                                celdaRandom[j][k] = "0";
+
+                            }
+
+                        } else {
+
+                            celdaRandom[j][k] = "0";
+
+                        }
+
+                        console.log(celdaRandom[j]);
+
+                    }
+                }
+
+            }
+
+            return celdaRandom;
+
+        }
+
+
+
+        function cuentaMinas(fil, col, celda) {
+
+            //if (celda[i+1][])
+
+        }
+    </script>
+
+</body>
+
+</html>

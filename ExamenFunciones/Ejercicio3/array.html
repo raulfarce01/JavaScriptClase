@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array</title>
+</head>
+
+<body>
+
+    <script>
+        arrayOrdenado = pidePalabras();
+
+        //Mostramos el resultado en la página
+        for (i = 0; i < arrayOrdenado.length; i++) {
+
+            document.write(arrayOrdenado[i] + "<br>");
+
+        }
+
+        //Esta función no aparece en el examen, pero es una función que se encarga de pedir las palabras que vamos a insertar
+        //en el array para después mandarlas a la función del examen ordenaArray()
+        function pidePalabras() {
+
+            //Declaramos el array donde vamos a insertar las palabras
+            var arrayPalabras = new Array();
+
+            do {
+                //pedimos al usuario las palabras que vamos a ordenar
+                var palabra = prompt("Escribe una palabra");
+
+                //Esta condición es para el momento en que se pulsa cancelar, ya que se crea una variable palabra con el contenido null
+                if (palabra != null) {
+
+                    //Añadimos las palabras al array con el método push
+                    arrayPalabras.push(palabra);
+
+                }
+
+
+            } while (palabra != null || palabra == false);
+
+            //Enviamos el array a la función para ordenarlo
+            arrayOrdenado = ordenaArray(arrayPalabras);
+
+            return arrayOrdenado;
+
+        }
+
+        function ordenaArray(palabras) {
+
+            //usamos la función sort para ordenar el array
+            palabras.sort();
+
+            return palabras;
+
+        }
+    </script>
+
+</body>
+
+</html>
