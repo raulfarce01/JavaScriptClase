@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objeto Punto</title>
+</head>
+
+<body>
+
+    <script>
+        function Punto(a, b) {
+
+            //Si el valor recibido no es un número, el punto pasa a tener la coordenada correspondiente
+            //establecida a 0
+            if (isNaN(a)) {
+                this.x = 0;
+            } else {
+                this.x = a;
+            }
+
+            //Si el valor recibido no es un número, el punto pasa a tener la coordenada correspondiente
+            //establecida a 0
+            if (isNaN(b)) {
+                this.y = 0;
+            } else {
+                this.y = b;
+            }
+
+            //Método para cambiar el valor del un punto
+            this.cambiar = (a, b) => {
+
+                if (isNaN(a)) {
+                    this.x = 0;
+                } else {
+                    this.x = a;
+                }
+
+                if (isNaN(b)) {
+                    this.y = 0;
+                } else {
+                    this.y = b;
+                }
+
+            }
+
+            //Copia un punto para asignarlo a una variable
+            this.copia = () => {
+
+                puntoVuelta = new Punto(this.x, this.y);
+
+                return puntoVuelta;
+
+            }
+
+            //compara que el punto p sea igual al otro
+            this.iguales = (p) => {
+
+                if (p.x == this.x) {
+
+                    if (p.y == this.y) {
+
+                        return true;
+
+                    } else {
+
+                        return false;
+
+                    }
+                } else {
+
+                    return false;
+
+                }
+            }
+
+            //Suma los puntos
+            this.suma = (p) => {
+
+                puntoX = p.x + this.x;
+                puntoY = p.y + this.y;
+
+                puntoSuma = new Punto(puntoX, puntoY);
+
+                return puntoSuma;
+
+
+            }
+
+            //Devuelve una cadena de texto con el punto
+            this.toString = () => {
+
+                return `(${this.x}, ${this.y})`
+
+            }
+
+        }
+
+        //Creación de objetos
+        miPunto = new Punto(3, 2);
+        puntoIgual = new Punto(8, 3);
+        puntoDif = new Punto(10, -2);
+        //Copiamos miPunto en puntoCopia por el método creado
+        puntoCopia = miPunto.copia();
+
+        //Mostramos ambos puntos
+        console.log(miPunto.toString());
+        console.log(puntoCopia.toString());
+
+        //Cambiamos las coordenadas del punto a 8, 3
+        miPunto.cambiar(8, 3);
+
+        //Lo mostramos para comprobar que haya cambiado
+        console.log(miPunto.toString());
+
+        //Comprobamos que el punto(8, 3) sea igual a puntoIgual(8, 3) y puntoDif(10, -2)
+        console.log(miPunto.iguales(puntoIgual));
+        console.log(miPunto.iguales(puntoDif));
+
+        //Sumamos puntoIgual a miPunto
+        puntoSuma = miPunto.suma(puntoIgual);
+
+        //Mostramos el resultado
+        console.log(puntoSuma.toString());
+    </script>
+
+</body>
+
+</html>
