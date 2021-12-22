@@ -27,9 +27,6 @@
         var posBarco = [];
         var dir = [];
         var cuenta = 0;
-        var long4 = 4;
-        var long3 = 3;
-        var long2 = 2;
 
         document.write("<table>");
 
@@ -43,42 +40,46 @@
         //Siendo i las filas
         for (let i = 0; i < 10; i++) {
 
+            console.log("Hola");
+
             document.write("<tr>");
 
-            if (dir[$cuenta] == 0) {
+            if (dir[cuenta] >= 0) {
 
-                if (posBarco[$cuenta] == i) {
+                if (posBarco[cuenta] == i) {
 
-                    document.write("<tr style='background-color: black;'");
+                    document.write("<td style='background-color: black;'></td>");
 
                 } else {
 
-                    document.write("<tr>");
+                    document.write("<td></td>");
 
                 }
 
+
             } else {
 
-                document.write("<tr>");
+                document.write("<td></td>");
+
+                document.write("</tr>");
 
             }
 
             //Siendo j las columnas
             for (let j = 0; j < 10; j++) {
 
-                if ($dir[cuenta] == 1) {
-
+                if (dir[cuenta] == 1) {
 
 
                 } else {
 
-                    document.write("<td>");
+                    document.write("<td></td>");
 
                 }
 
             }
 
-            document.write("<tr>");
+            document.write("<tr></tr>");
         }
 
         document.write("</table>");
