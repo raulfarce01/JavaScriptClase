@@ -33,8 +33,13 @@
 
     <script>
         var juego1 = new datos();
+
+        //La función inserta datos pertenece al objeto datos y se encarga de recoger la información
+        //para crear un nuevo juego de buscaminas
         juego1.insertaDatos();
 
+        //Esta función se encarga colocar el valor necesario en cada celda de la tabla, ya sea valor
+        //o número
         function Mina(fila, col, min) {
 
             this.fila = fila;
@@ -43,13 +48,19 @@
 
             this.celdaAleatoria = function(fila, col, min) {
 
+                //cedaRandom es un array en el que almacenaremos otro array
                 const celdaRandom = new Array(this.fil);
+
+                //alFila es un array de números aleatorios para conocer en qué fila cae la mina
                 const alFila = new Array();
+
+                //alCol es un array de números aleatorios para conocer la columna de la mina
                 const alCol = new Array();
                 numMinas = 0;
 
                 for (i = 0; i < fila; i++) {
 
+                    //Creamos el array dentro del otro array
                     celdaRandom[i] = new Array(col);
 
 
@@ -57,6 +68,8 @@
 
                 //console.log(celdaRandom);
 
+                //Comprobamos que el número de minas actuales no sobrepase el número de minas
+                //solicitadas por el usuario
                 while (numMinas < min) {
 
                     //console.log(numMinas);
@@ -64,8 +77,11 @@
                     //console.log(celdaRandom.length);
                     //console.log(min);
 
+                    //Elegimos la fila aleatoria
                     numAlFila = parseInt(Math.random() * fila);
                     //alFila[i] = numAlFila;
+
+                    //Elegimos la columna aleatoria
                     numAlCol = parseInt(Math.random() * col);
                     //alCol[i] = numAlCol;
 
@@ -79,8 +95,12 @@
 
                                 if (k == numAlCol) {
 
+                                    //Esta parte del if es para que no se sobreescriban minas
                                     if (celdaRandom[j][k] != "X") {
 
+                                        //En caso de que los valores del bucle for coincidan con
+                                        //la fila y la columna, asignamos una X para saber
+                                        //que hay una mina
                                         celdaRandom[j][k] = "X";
                                         numMinas++;
 
@@ -96,6 +116,7 @@
                 for (j = 0; j < fila; j++) {
                     for (k = 0; k < col; k++) {
 
+                        //Aquí asignamos el valor cero a las celdas en que no hay minas
                         if (celdaRandom[j][k] != "X") {
                             celdaRandom[j][k] = 0;
                         }
@@ -107,6 +128,7 @@
 
             }
 
+            //Esta función crea la tabla donde mostraremos el juego
             this.creaTabla = function(fil, col, min) {
 
                 console.log("Entra creaTabla");
@@ -114,6 +136,8 @@
                 console.log(`Cols:  ${col}`);
                 console.log(`Minas:  ${min}`);*/
 
+                //Llamamos a la función celdaAleatoria para almacenar en la variable minas
+                //las minas
                 var minas = this.celdaAleatoria(fil, col, min);
 
                 document.write("<table>");
@@ -129,10 +153,13 @@
 
                         if (minas[i][j] == "X") {
 
+                            //Escribimos un asterisco en caso de que el valor i, j del array sea X
                             document.write("<td>*</td>");
 
                         } else {
 
+                            //En caso de que no haya una mina, llamamos a la función cuentaMinas
+                            //para calcular el número de minas alrededor
                             document.write(`<td>${this.cuentaMinas(i, j, minas, fil, col)}</td>`);
 
                         }
@@ -147,12 +174,15 @@
 
             }
 
+            //Esta función recorre las celdas arrededor de la seleccionada
+            //y devuelve el número de minas que hay alrededor
             this.cuentaMinas = function(i, j, minas, fil, col) {
 
                 minaCerca = 0;
 
                 console.log(minas[i][j]);
 
+                //Todos estos if sirven para rodear la celda en la que nos encontramos
                 if (i > 0) {
 
                     if (minas[i - 1][j] == "X") {
@@ -238,6 +268,7 @@
 
         }
 
+        //Introducimos los datos mediante esta función
         function datos() {
 
             this.insertaDatos = function() {
