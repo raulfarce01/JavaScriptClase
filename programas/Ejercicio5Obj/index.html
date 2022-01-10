@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reloj Digital</title>
+</head>
+
+<body>
+
+    <p id="hora"></p>
+
+    <script>
+        let hora = new Date();
+
+        function relojDigital() {
+
+
+            if (hora.getHours() < 10 && hora.getMinutes() < 10 && hora.getSeconds() < 10) {
+
+                document.getElementById("hora").innerHTML = `0${hora.getHours()} : 0${hora.getMinutes()} : 0${hora.getSeconds()}`;
+
+            } else if (hora.getHours() < 10 && hora.getMinutes() < 10) {
+
+                document.getElementById("hora").innerHTML = `0${hora.getHours()} : 0${hora.getMinutes()} : ${hora.getSeconds()}`;
+
+            } else if (hora.getHours() < 10) {
+
+                document.getElementById("hora").innerHTML = `0${hora.getHours()} : ${hora.getMinutes()} : ${hora.getSeconds()}`;
+
+            } else if (hora.getMinutes() < 10) {
+
+                document.getElementById("hora").innerHTML = `${hora.getHours()} : 0${hora.getMinutes()} : ${hora.getSeconds()}`;
+
+            } else if (hora.getSeconds() < 10) {
+
+                document.getElementById("hora").innerHTML = `${hora.getHours()} : ${hora.getMinutes()} : 0${hora.getSeconds()}`;
+
+            } else if (hora.getHours() < 10 && hora.getSeconds() < 10) {
+
+                document.getElementById("hora").innerHTML = `0${hora.getHours()} : ${hora.getMinutes()} : 0${hora.getSeconds()}`;
+
+            } else if (hora.getMinutes() < 10 && hora.getSeconds() < 10) {
+
+                document.getElementById("hora").innerHTML = `${hora.getHours()} : 0${hora.getMinutes()} : 0${hora.getSeconds()}`;
+
+            } else {
+
+                document.getElementById("hora").innerHTML = `${hora.getHours()} : ${hora.getMinutes()} : ${hora.getSeconds()}`;
+
+            }
+
+        }
+
+
+
+        function diaSemana() {
+
+            switch (hora.getDay()) {
+
+                case 1:
+                    document.getElementById("hora").innerHTML = "Lunes";
+                    break;
+
+                case 2:
+                    document.getElementById("hora").innerHTML = "Martes";
+                    break;
+
+                case 3:
+                    document.getElementById("hora").innerHTML = "Miércoles";
+                    break;
+
+                case 4:
+                    document.getElementById("hora").innerHTML = "Jueves";
+                    break;
+
+                case 5:
+                    document.getElementById("hora").innerHTML = "Viernes";
+                    break;
+
+                case 6:
+                    document.getElementById("hora").innerHTML = "Sábado";
+                    break;
+
+                case 0:
+                    document.getElementById("hora").innerHTML = "Domingo";
+                    break;
+            }
+
+        }
+
+        function diaMes() {
+
+
+            document.getElementById("hora").innerHTML = hora.getUTCDate();
+
+        }
+
+        function mesF() {
+
+            switch (hora.getMonth()) {
+
+                case 1:
+                    document.getElementById("hora").innerHTML = "Febrero";
+                    break;
+
+                case 2:
+                    document.getElementById("hora").innerHTML = "Marzo";
+                    break;
+
+                case 3:
+                    document.getElementById("hora").innerHTML = "Abril";
+                    break;
+
+                case 4:
+                    document.getElementById("hora").innerHTML = "Mayo";
+                    break;
+
+                case 5:
+                    document.getElementById("hora").innerHTML = "Junio";
+                    break;
+
+                case 6:
+                    document.getElementById("hora").innerHTML = "Julio";
+                    break;
+
+                case 7:
+                    document.getElementById("hora").innerHTML = "Agosto";
+                    break;
+
+                case 8:
+                    document.getElementById("hora").innerHTML = "Septiembre";
+                    break;
+
+                case 9:
+                    document.getElementById("hora").innerHTML = "Octubre";
+                    break;
+
+                case 10:
+                    document.getElementById("hora").innerHTML = "Noviembre";
+                    break;
+
+                case 11:
+                    document.getElementById("hora").innerHTML = "Diciembre";
+                    break;
+
+                case 0:
+                    document.getElementById("hora").innerHTML = "Enero";
+                    break;
+            }
+
+        }
+
+        function ano() {
+
+
+            document.getElementById("hora").innerHTML = hora.getFullYear();
+
+        }
+
+        function fecha() {
+
+            let mes = "";
+
+            switch (hora.getMonth()) {
+
+                case 1:
+                    mes = "Febrero";
+                    break;
+
+                case 2:
+                    mes = "Marzo";
+                    break;
+
+                case 3:
+                    mes = "Abril";
+                    break;
+
+                case 4:
+                    mes = "Mayo";
+                    break;
+
+                case 5:
+                    mes = "Junio";
+                    break;
+
+                case 6:
+                    mes = "Julio";
+                    break;
+
+                case 7:
+                    mes = "Agosto";
+                    break;
+
+                case 8:
+                    mes = "Septiembre";
+                    break;
+
+                case 9:
+                    mes = "Octubre";
+                    break;
+
+                case 10:
+                    mes = "Noviembre";
+                    break;
+
+                case 11:
+                    mes = "Diciembre";
+                    break;
+
+                case 0:
+                    mes = "Enero";
+                    break;
+            }
+
+            document.getElementById("hora").innerHTML = `${hora.getUTCDate()} de ${mes} de ${hora.getUTCFullYear()}`;
+        }
+    </script>
+
+    <button onclick="relojDigital()">Hora</button>
+
+    <button onclick="diaSemana()">Dia de la Semana</button>
+
+    <button onclick="diaMes()">Dia del Mes</button>
+
+    <button onclick="mesF()">Mes</button>
+
+    <button onclick="ano()">Año</button>
+
+    <button onclick="fecha()">Fecha Local</button>
+
+
+
+</body>
+
+</html>
