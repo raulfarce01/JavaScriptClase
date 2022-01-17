@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ej12</title>
+</head>
+
+<body>
+
+    <p>โง่หรืออะไร</p>
+
+    <script>
+        let tai = /[\u0E00-\u0E7F]/;
+
+        console.log(tai.test("โง่หรืออะไร"));
+        console.log(tai.test("Bobo o qué"));
+
+
+        let enetil = /[\u0000 -\u00FF]/;
+
+        console.log(enetil.test("ñoño o qué"));
+        console.log(enetil.test("โง่หรืออะไร"));
+
+        let user = /([A-Z (a-z | \u00C0-\u00FF)])+/
+
+        //([0][1-9]|[1-2][0-9]|[3][01])\/([0][1-9]|[1][0-2])\/([0-9]{4})
+    </script>
+
+</body>
+
+</html>
