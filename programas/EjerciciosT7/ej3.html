@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 3</title>
+</head>
+
+<body>
+
+    <button onclick="(numBoton == 0 ? ocultaPantalla() : muestraPantalla())">Muestra la info</button>
+    <div>
+        <p id="id1"></p>
+    </div>
+
+    <script>
+        var numBoton = 0;
+
+        let muestraPantalla = function() {
+
+            let aT = screen.availTop;
+            let aL = screen.availLeft;
+            let aH = screen.availHeight;
+            let aW = screen.availWidth;
+            let h = screen.height;
+            let w = screen.width;
+            let o = screen.orientation.type;
+
+            document.getElementById("id1").innerHTML = `AT: ${aT} <br> AL: ${aL} <br> AH: ${aH} <br> AW: ${aW} <br> H: ${h} <br> W: ${w} <br> O: ${o} <br>`
+
+            numBoton++;
+        }
+
+        let ocultaPantalla = function() {
+
+            let aT = screen.availTop;
+            let aL = screen.availLeft;
+            let aH = screen.availHeight;
+            let aW = screen.availWidth;
+            let h = screen.height;
+            let w = screen.width;
+            let o = screen.orientation.type;
+
+            document.getElementById("id1").innerHTML = ``;
+
+            numBoton--;
+
+        }
+    </script>
+
+</body>
+
+</html>
