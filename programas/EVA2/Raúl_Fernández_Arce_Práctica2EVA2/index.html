@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Herencia</title>
+</head>
+
+<body>
+
+
+    <script>
+        function Ordenador(marca, modelo, memoriaRam = 4, capacidadDisco = 512, pulgadas = 17) {
+            //Igualamos las variables que recibimos por parámetros a las propias de la clase
+            this.marca = marca;
+            this.modelo = modelo;
+            this.memoriaRam = memoriaRam;
+            this.capacidadDisco = capacidadDisco;
+            this.pulgadas = pulgadas;
+
+            //Método para mostrar la información por pantalla
+            this.toString = function() {
+                console.log(`Marca: ${marca} <br>
+                Modelo: ${modelo} <br>
+                Memoria RAM: ${memoriaRam} <br>
+                Capacidad de Disco: ${capacidadDisco} <br>
+                Pulgadas: ${pulgadas} <br>`);
+            }
+        }
+
+        function Portatil(marca, modelo, autonomia, memoriaRam, capacidadDisco, pulgadas) {
+            //Usamos __proto__ para heredar de otra clase
+            this.__proto__ = new Ordenador(marca, modelo, memoriaRam, capacidadDisco, pulgadas);
+            this.autonomia = autonomia;
+
+            this.toString = function() {
+                parent.toString()
+                console.log(`Autonomía: ${autonomia} <br>`);
+            }
+        }
+
+        let pc1 = new Ordenador();
+        console.log("🚀 ~ file: index.html ~ line 45 ~ pc1", pc1);
+        let pc2 = new Ordenador('Asus', 'pc2');
+        console.log("🚀 ~ file: index.html ~ line 47 ~ pc2", pc2);
+
+        let laptop1 = new Portatil();
+        console.log("🚀 ~ file: index.html ~ line 50 ~ laptop1", laptop1);
+        let laptop2 = new Portatil('Asus', 'laptop2', 30);
+        console.log("🚀 ~ file: index.html ~ line 52 ~ laptop2", laptop2);
+    </script>
+</body>
+
+</html>
