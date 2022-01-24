@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuario y Contraseña</title>
+</head>
+
+<body>
+
+    <script>
+        //Requerimos que haya una letra mayúscula, una minúscula, un número y un caracter especial dentro del valor introducido, y además, debe tener una longitud entre 8 y 16 caracteres
+        let validaPasswd = /(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\W)\S{8,16}/
+
+        //Solicita cualquieŕ valor, y tiene que tener una longitud de entre 8 y 16 caracteres
+        let validaUser = /.{8,16}/
+
+        //Repetimos la solicitud de usuario hasta que el valor introducido por el usuario coincida con el de los requerimentos de la expresión regular
+        do {
+
+            var user = prompt("Escriba su usuario");
+
+            if (!user.match(validaUser)) {
+
+                alert("Usuario incorrecto, debe ocupar entre 8 y 16 caracteres");
+
+            }
+
+        } while (!user.match(validaUser));
+
+        //Igual que el usuario, pero con la expresión de la contraseña
+        do {
+
+            var passwd = prompt("Escriba su contraseña");
+
+            if (!passwd.match(validaPasswd)) {
+
+                alert("Contraseña incorrecta, debe ocupar entre 8 y 16 caracteres, tener una mayúscula, un dígito, un caracter especial");
+
+            }
+
+        } while (!passwd.match(validaPasswd));
+
+        alert("Login válido");
+    </script>
+
+</body>
+
+</html>
