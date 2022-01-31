@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nos Vamos</title>
+</head>
+
+<body>
+
+    <button name="boton" id="boton1" onclick="abreGoogle()">¡Nos vamos!</button>
+
+
+    <script>
+        function abreGoogle() {
+
+            location.href = "https://www.google.es/";
+
+        }
+
+        var tiempo = setTimeout(function() {
+
+            location.href = "https://duckduckgo.com/";
+
+        }, 5000);
+    </script>
+
+
+</body>
+
+</html>
