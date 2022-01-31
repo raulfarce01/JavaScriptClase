@@ -10,7 +10,113 @@
 
 <body>
 
-    <script></script>
+    <script>
+        //Formato de fecha: dd/mm/yyyy
+        let fechaValida = /([0][1-9]|[1-2][0-9]|[3][01])\/([0][1-9]|[1][0-2])\/([0-9]{4})/;
+
+        do {
+            //asignamos la fecha a una variable recibida por el usuario
+            var fecha1 = prompt('Escribe una fecha:');
+
+            //Comprobamos que esté en el formato correcto
+            if (!fecha1.match(fechaValida)) {
+
+                alert('La fecha debe estar en el formato dd/mm/yyyy');
+
+            }
+
+        } while (!fecha1.match(fechaValida));
+
+        do {
+            //asignamos la fecha a una variable recibida por el usuario
+            var fecha2 = prompt('Escribe una fecha:');
+
+            //Comprobamos que esté en el formato correcto
+            if (!fecha2.match(fechaValida)) {
+
+                alert('La fecha debe estar en el formato dd/mm/yyyy');
+
+            }
+
+        } while (!fecha2.match(fechaValida));
+
+        //param fecha es un String que contiene la fecha
+        //función para crear una fecha a partir de un String
+        let creaFecha = function(fecha) {
+
+            //recogemos la parte entera de los días
+            d = parseInt(fecha.substring(0, 2));
+
+            //recogemos la parte entera de los meses
+            m = parseInt(fecha.substring(3, 5));
+
+            //recogemos la parte entera de los años
+            y = parseInt(fecha.substring(6, 10));
+
+            //console.log(typeof d, typeof m, typeof y);
+
+            //Devolvemos la fecha, y lo hacemos con el formato del objeto (yyyy-mm-dd)
+            return new Date(y, m, d);
+
+        }
+
+
+        //param fecha1, fecha2 son objetos de tipo Date
+        //función para calcular la diferencia de días entre 2 fechas
+        let operaFecha = function(fecha1, fecha2) {
+
+            //Convertimos las fechas a milisegundos
+            ms1 = fecha1.getTime();
+            ms2 = fecha2.getTime();
+
+            //console.log(ms1);
+            //console.log(ms2);
+
+            //Restamos un valor a otro en función de cuál sea el mayor
+            if (ms1 < ms2) {
+
+                msFinal = ms2 - ms1;
+
+            } else {
+
+                msFinal = ms1 - ms2;
+
+            }
+
+            //console.log(msFinal);
+
+            //Variable auxiliar donde almacenaremos los dias
+            d = 0;
+
+            //Segundos
+            secs = msFinal * 0.001;
+
+            //minutos
+            mins = secs * 0.0166667;
+
+            //horas
+            hour = mins * 0.0166667;
+
+            //Cogemos la parte entera del valor calculado
+            d = parseInt(hour * 0.0416667);
+
+            //Devolvemos los días
+            return d;
+        }
+
+        //fecha1 = '13/07/2001';
+        //fecha2 = '20/07/2001';
+
+        date1 = creaFecha(fecha1);
+        date2 = creaFecha(fecha2);
+
+        console.log(date1);
+        console.log(date2);
+
+        resFecha = operaFecha(date1, date2);
+
+        console.log(resFecha);
+    </script>
 
 </body>
 
