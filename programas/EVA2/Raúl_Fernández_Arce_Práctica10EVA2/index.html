@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="cuadro" style="width: 20px; height: 20px; background-color: aqua; float: left;"></div>
+
+    <script>
+        document.addEventListener("mousemove", function(ev) {
+            console.log("🚀 ~ file: Cod6.html ~ line 18 ~ document.addEventListener ~ ev.clientY", ev.clientX, ev.clientY, ev.pageX, ev.pageY);
+
+            var capa = document.getElementById("cuadro");
+            capa.style.position = "absolute";
+            capa.style.left = ev.clientX, "px";
+            capa.style.top = ev.clientY, "px";
+        });
+    </script>
+</body>
+
+</html>

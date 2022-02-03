@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <p id="parrafo">Aquí aparecerán las coordenadas</p>
+    <script>
+        document.addEventListener("mousemove", function(ev) {
+            document.getElementById("parrafo").innerText = "PosiciónX: " + ev.clientX +
+                ", PosiciónY: " + ev.clientY;
+            console.log("🚀 ~ file: Cod6.html ~ line 18 ~ document.addEventListener ~ ev.clientY", ev.clientX, ev.clientY)
+        });
+    </script>
+
+</body>
+
+</html>
