@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Párrafo Nuevo</title>
+</head>
+
+<body>
+
+    <ol id="lista">
+        <li id="li1">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque corrupti debitis eligendi sed. Tempora, repellat? Est, pariatur iusto molestiae reprehenderit commodi ad impedit adipisci non consequuntur harum unde deleniti iste!</li>
+        <li id="li2">In eos distinctio doloremque quaerat dolore illo incidunt quibusdam tenetur laboriosam delectus beatae quae quos cumque obcaecati amet et veritatis at architecto numquam molestiae accusamus, dolorem porro saepe? Id, sint?</li>
+        <li id="li3">Reiciendis hic laborum obcaecati esse commodi pariatur nisi quisquam ratione rem nihil unde eveniet, cupiditate ullam sunt reprehenderit possimus fuga placeat saepe omnis architecto! Quaerat ratione eum placeat porro aliquam.</li>
+        <li id="li4">Tenetur neque provident id! Illo deserunt error iste ipsum dolor debitis non reprehenderit, illum provident officiis quae soluta a optio nulla incidunt labore laborum fugit doloribus vitae. Deleniti, quo quia.</li>
+        <li id="li5">Vel tenetur sequi unde distinctio illo tempore et assumenda veritatis dolor nostrum laboriosam vero corrupti quod expedita qui culpa a earum ab, voluptate eius perferendis illum saepe aliquid. Aliquam, mollitia?</li>
+        <li id="li6">Delectus repudiandae, voluptates, voluptatum error quod necessitatibus obcaecati exercitationem quibusdam numquam quae unde sint corporis sunt quidem porro alias molestiae! Velit explicabo quos ut autem quaerat? Mollitia id labore quasi.</li>
+        <li id="li7">Repellendus illum quod id, necessitatibus animi cum soluta eligendi temporibus eveniet. Illo, distinctio! Exercitationem, ipsum saepe in sed ullam sequi molestias atque voluptate aspernatur iste dolor dolorum a amet esse!</li>
+        <li id="li8">Voluptatem praesentium voluptatum cupiditate a totam doloremque adipisci nostrum quibusdam tempora! Doloremque officia, culpa sapiente est omnis quasi eum iure explicabo ut molestiae a animi sunt beatae quisquam deleniti nemo.</li>
+        <li id="li9">Esse at corporis atque earum iste, quo, nulla blanditiis aliquam ipsa laboriosam necessitatibus ab. Reiciendis sequi perspiciatis rerum neque impedit laudantium adipisci qui voluptates voluptatibus atque culpa minima, distinctio eum?</li>
+    </ol>
+
+    <script>
+        //Inserción del texto
+        do {
+
+            var texto = prompt("Inserta Texto");
+
+        } while (texto == "" || texto == null);
+
+        //Inserción de la posición del párrafor
+        do {
+
+
+            var pos = prompt("Inserta la posición");
+
+            //En caso de valor incorrecto, solicitamos los números de nuevo y avisamos el error
+            if (pos > 10 || pos < 1) {
+
+                alert("El valor debe estar entre 1 y 10");
+
+            }
+
+        } while (pos < 1 || pos > 10);
+
+        //Creamos un elemento y le insertamos el texto introducido por el usuario
+        nuevo = document.createElement("li");
+        nuevo.textContent = texto;
+
+        //Recogemos la posición de la lista mediante su id
+        lista = document.getElementById(`li${pos}`);
+        console.log("🚀 ~ file: index.html ~ line 44 ~ pos", pos)
+
+        //Recogemos la lista padre
+        listaPadre = document.getElementById("lista");
+
+        //Insertamos el párrafo nuevo en la lista padre antes del párrafo anterior
+        listaPadre.insertBefore(nuevo, lista);
+    </script>
+
+</body>
+
+</html>

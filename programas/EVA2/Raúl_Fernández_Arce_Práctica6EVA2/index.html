@@ -108,11 +108,15 @@
 
     <script>
         var body = document.getElementById("cuerpo");
-        scroll = body.scrollHeight;
+        height = body.scrollHeight;
 
         var tiempo = setTimeout(function() {
 
-            scrollY(scroll);
+            window.scroll({
+                top: height,
+                left: 0,
+                behavior: "smooth"
+            });
 
         }, 5000)
     </script>
