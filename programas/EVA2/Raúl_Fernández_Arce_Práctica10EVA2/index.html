@@ -10,16 +10,27 @@
 
 <body>
 
-    <div id="cuadro" style="width: 20px; height: 20px; background-color: aqua; float: left;"></div>
+    <div id="cuadro" style="width: 50px; height: 50px; background-color: aqua; float: left;"></div>
 
     <script>
+        //Creamos un evento que reaccione al movimiento del ratón
         document.addEventListener("mousemove", function(ev) {
             console.log("🚀 ~ file: Cod6.html ~ line 18 ~ document.addEventListener ~ ev.clientY", ev.clientX, ev.clientY, ev.pageX, ev.pageY);
 
+            //La coordenada x del ratón menos la mitad del contenedor que lo persigue para que el primero quede en el centro
+            let x = ev.clientX - 25;
+            console.log("🚀 ~ file: index.html ~ line 20 ~ document.addEventListener ~ x", x)
+
+            //La coordenada y del ratón menos 20, el valor para que quede el ratón en el centro del contenedor
+            let y = ev.clientY - 20;
+            console.log("🚀 ~ file: index.html ~ line 21 ~ document.addEventListener ~ y", y)
+
             var capa = document.getElementById("cuadro");
+
+            //Cambiamos la posición de la capa para poder ponerle las propiedades top y left para el desplazamiento del ratón
             capa.style.position = "absolute";
-            capa.style.left = ev.clientX, "px";
-            capa.style.top = ev.clientY, "px";
+            capa.style.left = `${x}px`;
+            capa.style.top = `${y}px`;
         });
     </script>
 </body>
