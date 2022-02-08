@@ -10,6 +10,8 @@
 
 <body>
 
+    <div id="palabras"></div>
+
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus dolores doloribus fuga dolorum! Ab architecto libero perferendis? Mollitia vel voluptates laborum ad error, dolorem, aspernatur provident, facilis architecto repellat dolor?</p>
     <p>Delectus soluta ipsam, saepe in dignissimos sint nam error, id temporibus ab voluptates, doloremque nobis voluptate numquam consectetur molestias nisi officiis eius quas corrupti deserunt expedita voluptatibus voluptas. Delectus, perferendis?</p>
     <p>In, aliquam culpa fugiat non delectus quaerat voluptatibus dolorum assumenda ad aut facilis modi ratione sint quod, dignissimos minus expedita et deleniti nemo. Mollitia aperiam labore, nostrum corporis delectus minima!</p>
@@ -36,24 +38,31 @@
 
             var pos = 0;
             var parrafo = [];
+            var palabrasTotal = 0;
 
             for (var parrafos of document.querySelectorAll("p")) {
 
                 parrafo[pos] = parrafos.innerHTML;
                 console.log("🚀 ~ file: index.html ~ line 42 ~ espacios ~ parrafo[pos]", parrafo[pos]);
 
-                palabras = parrafo[pos].split(" ");
+                palabras = parrafo[pos].trim().split(" ");
                 numPalabras = palabras.length;
+                palabrasTotal += numPalabras;
 
                 console.log(numPalabras);
+                console.log(palabrasTotal);
 
                 pos++;
 
             }
 
+            return palabrasTotal;
+
         }
 
-        espacios();
+        numPalabras = espacios();
+
+        document.getElementById("palabras").innerHTML = `<strong>${numPalabras}</strong>`;
     </script>
 
 </body>
