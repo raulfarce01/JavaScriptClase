@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookies</title>
+</head>
+
+<body>
+
+    <input type="button" value="hola" onclick="muestra == 0 ? ocultaCookie : muestraCookie()">
+    <input type="button" value="hola3" onclick="creaLogin()">
+    <input type="button" value="hola4" onclick="creaPassword()">
+    <input type="button" value="hola5" onclick="borra1()">
+    <input type="button" value="hola6" onclick="borra2()">
+
+    <p id="hola"></p>
+
+
+    <script>
+        let muestra = 0;
+        let hola = document.getElementById("hola");
+
+        function muestraCookie() {
+
+            hola.innerHTML = `${document.cookie}`;
+
+            muestra++;
+        }
+
+        function ocultaCookie() {
+
+            hola.innerHTML = ``;
+
+            muestra--;
+
+        }
+
+        function creaLogin() {
+
+            document.cookie = "login=miLogin";
+            console.log(document.cookie);
+
+        }
+
+        function creaPassword() {
+
+            document.cookie = "password=miPassword";
+            console.log(document.cookie);
+
+        }
+
+        function borra1() {
+
+            document.cookie = `login=miLogin; expires='${fechaCaduca}'`;
+            console.log(document.cookie);
+
+        }
+
+        function borra2() {
+
+            document.cookie = `password=miPassword; expires='${fechaCaduca}'`;
+            console.log(document.cookie);
+
+        }
+
+        fechaCaduca = new Date(2001, 01, 01);
+    </script>
+</body>
+
+</html>

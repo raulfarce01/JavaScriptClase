@@ -34,11 +34,22 @@
     <script>
         let espacios = function() {
 
-            let espacios = /[ ]+/
+            var pos = 0;
+            var parrafo = [];
 
-            p = document.querySelectorAll("p");
+            for (var parrafos of document.querySelectorAll("p")) {
 
-            p.replace(" ", espacios);
+                parrafo[pos] = parrafos.innerHTML;
+                console.log("🚀 ~ file: index.html ~ line 42 ~ espacios ~ parrafo[pos]", parrafo[pos]);
+
+                palabras = parrafo[pos].split(" ");
+                numPalabras = palabras.length;
+
+                console.log(numPalabras);
+
+                pos++;
+
+            }
 
         }
 
