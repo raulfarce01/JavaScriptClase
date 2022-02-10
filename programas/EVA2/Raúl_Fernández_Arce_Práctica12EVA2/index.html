@@ -34,14 +34,16 @@
                 //2 es el botón secundario
             } else if (ev.button == 2) {
 
+                ev.preventDefault();
                 capa.style.backgroundColor = "blue";
 
             }
         }
 
         //Creamos los eventos para la hora de pulsar un botón o pasarlo por encima
-        document.addEventListener("mousedown", coloreaRojoAzul);
-        document.addEventListener("mouseover", coloreaVerde);
+        capa.addEventListener("mousedown", coloreaRojoAzul);
+        capa.addEventListener("mouseover", coloreaVerde);
+        capa.addEventListener("mouseup", coloreaVerde)
     </script>
 
 </body>
