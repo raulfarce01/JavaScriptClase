@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ratón de Colores</title>
+</head>
+
+<body>
+
+    <div class="capa" style="border: 1px solid black; width: 60vw; height: 60vh; margin: auto;"></div>
+
+    <script>
+        //Recogemos el div por su clase
+        var capa = document.getElementsByClassName("capa")[0];
+
+        //Función para cambiar el fondo a verde
+        function coloreaVerde() {
+
+            capa.style.backgroundColor = "green";
+
+        }
+
+        //Función para cambiar el fondo a azul o rojo en función del botón del ratón pulsado
+        function coloreaRojoAzul(ev) {
+
+            //0 es el botón principal del ratón
+            if (ev.button == 0) {
+
+                capa.style.backgroundColor = "red";
+
+                //2 es el botón secundario
+            } else if (ev.button == 2) {
+
+                capa.style.backgroundColor = "blue";
+
+            }
+        }
+
+        //Creamos los eventos para la hora de pulsar un botón o pasarlo por encima
+        document.addEventListener("mousedown", coloreaRojoAzul);
+        document.addEventListener("mouseover", coloreaVerde);
+    </script>
+
+</body>
+
+</html>

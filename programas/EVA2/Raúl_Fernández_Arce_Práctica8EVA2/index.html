@@ -36,17 +36,29 @@
     <script>
         let espacios = function() {
 
+            //Pos es la posición en la que queremos poner el texto
             var pos = 0;
+
+            //En párrafo recogemos los párrafos
             var parrafo = [];
+
+            //En palabrasTotal recogemos el total de palabras contadas
             var palabrasTotal = 0;
 
+            //Recorremos los párrafos
             for (var parrafos of document.querySelectorAll("p")) {
 
+                //Recogemos el texto dentro de la etiqueta p
                 parrafo[pos] = parrafos.innerHTML;
                 console.log("🚀 ~ file: index.html ~ line 42 ~ espacios ~ parrafo[pos]", parrafo[pos]);
 
+                //Cortamos los espacios del final del párrafo y lo convertimos en un array rompiendo los espacios de entre medio
                 palabras = parrafo[pos].trim().split(" ");
+
+                //Recogemos el número de palabras mediante la longitud del array
                 numPalabras = palabras.length;
+
+                //Acumulamos todas las palabras
                 palabrasTotal += numPalabras;
 
                 console.log(numPalabras);
@@ -62,6 +74,7 @@
 
         numPalabras = espacios();
 
+        //Escribimos en negrita el número de palabras
         document.getElementById("palabras").innerHTML = `<strong>${numPalabras}</strong>`;
     </script>
 
