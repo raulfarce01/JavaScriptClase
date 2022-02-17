@@ -43,7 +43,14 @@
         //Creamos los eventos para la hora de pulsar un botón o pasarlo por encima
         capa.addEventListener("mousedown", coloreaRojoAzul);
         capa.addEventListener("mouseover", coloreaVerde);
-        capa.addEventListener("mouseup", coloreaVerde)
+        capa.addEventListener("mouseup", coloreaVerde);
+
+        //Evento para evitar que salga el menú contextual, ya que por defecto, sale al hacer click derecho
+        document.addEventListener("contextmenu", (ev) => {
+
+            ev.preventDefault();
+
+        });
     </script>
 
 </body>

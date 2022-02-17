@@ -14,11 +14,25 @@
         <h1>Título</h1>
         <p>Ejemplo de documento <strong>Visión en árbol</strong></p>
     </section>
-    <section id="s1">
+    <section id="s2">
         <p>Aquí solo hay texto</p>
     </section>
 
     <script>
+        for (i = 0; i < document.body.childNodes.length; i++) {
+
+            let elemento = document.body.childNodes[i];
+
+            console.log(elemento);
+
+            if (elemento.hasChildNodes()) {
+
+                let hijo = elemento.childNodes;
+
+                console.log(hijo.getAttributeNode("id"));
+
+            }
+        }
     </script>
 
 </body>
