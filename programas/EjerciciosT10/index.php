@@ -7,6 +7,6 @@
     <title>AJAX</title>
 </head>
 <body>
-    
+<?php phpinfo(); ?>
 </body>
 </html>

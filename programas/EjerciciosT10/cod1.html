@@ -10,8 +10,7 @@
 
 <body>
     <script>
-        fetch("./index.php")
-            .then(respuesta => {
+        fetch("./index.php").then(respuesta => {
                 console.log(respuesta.status); //Devuelve 200 (OK)
             })
             .catch(error => {
