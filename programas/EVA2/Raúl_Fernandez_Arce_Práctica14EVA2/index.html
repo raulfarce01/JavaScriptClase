@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrastra</title>
+</head>
+
+<body>
+
+    <div id="origen" class="origen" style="display: inline-block; width: 30vw; height: 10vh; opacity: 50; background-color: yellow;" draggable="true">Soy arrastrable</div>
+    <div id="destino" class="destino" style="display: inline-block; width: 30vw; height: 10vh; border: 1px solid black;" drop>Soy el destino</div>
+
+    <script>
+        var origen = document.getElementById("origen");
+        var destino = document.getElementById("destino");
+
+        //Evento para el momento en que se empieza a arrastrar
+        document.addEventListener("dragstart", function(event) {
+            //Asignamos a la variable origen el drag que está sucediendo
+            origen = event.target;
+        });
+
+        //Comportamiento para evitar que el comportamiento por defecto de volver el drag a su sitio ocurra
+        document.addEventListener("dragover", function(event) {
+            event.preventDefault();
+        });
+
+        //evento ocurrido al entrar el origen al destino
+        document.addEventListener("dragenter", function(event) {
+            //Cambiar el color de fondo cuando el origen se coloca sobre el destino
+            if (event.target.className == "destino") {
+                event.target.style.background = "red";
+            }
+
+        });
+
+        //evento ocurrido al dejar el destino al mover el origen
+        document.addEventListener("dragleave", function(event) {
+            //Devolver el color a blanco cuando se deja el destino
+            if (event.target.className == "destino") {
+                event.target.style.background = "white";
+            }
+
+        });
+
+        //evento al soltar el drag
+        document.addEventListener("drop", function(event) {
+            event.preventDefault();
+
+            //Esto es lo que describe el comportamiento al dejar el origen sobre el destino
+            if (event.target.className == "destino") {
+                event.target.style.background = "orange";
+                origen.style.backgroundColor = "white";
+
+                //la linea de abajo es porque si dejo el div en blanco se me mueve el otro div hacia abajo, así que tuve que rellenarlo con un espacio
+                origen.innerHTML = "&nbsp;";
+            }
+        });
+    </script>
+
+</body>
+
+</html>
