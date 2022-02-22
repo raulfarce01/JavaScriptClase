@@ -107,9 +107,13 @@
         ex quidem. Voluptas non pariatur voluptatibus numquam sed perferendis illum laboriosam rem officia. Fugiat, aliquam aperiam.</p>
 
     <script>
+        //Recogemos el body, aunque también podríamos hacerlo con document.body
         var body = document.getElementById("cuerpo");
+
+        //Recorremos la altura de la página
         height = body.scrollHeight;
 
+        //Comenzamos una cuenta atrás de 5 segundos que, al finalizar, nos envíe al final de la página
         var tiempo = setTimeout(function() {
 
             window.scroll({

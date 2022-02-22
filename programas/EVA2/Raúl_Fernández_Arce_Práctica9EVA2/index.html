@@ -10,26 +10,54 @@
 
 <body>
 
-    <section id="s1">
-        <h1>Título</h1>
-        <p>Ejemplo de documento <strong>Visión en árbol</strong></p>
+    <section id="s1" class="seccion">
+        <h1 id="titulo" class="titulo">Título</h1>
+        <p class="texto">Ejemplo de documento <strong>Visión en árbol</strong></p>
     </section>
-    <section id="s2">
+    <section id="s2" class="seccion">
         <p>Aquí solo hay texto</p>
     </section>
 
     <script>
-        for (i = 0; i < document.body.childNodes.length; i++) {
+        //Recogemos la etiqueta HTML
+        let etihtml = document.getElementsByTagName("html")[0];
+        //console.log(etihtml.children.length);
 
-            let elemento = document.body.childNodes[i];
+        //Recorremos sus elementos en función de la cantidad de hijos que tenga
+        for (i = 0; i < etihtml.children.length; i++) {
 
-            console.log(elemento);
+            //recogemos el hijo
+            let elemento = etihtml.children[i];
 
-            if (elemento.hasChildNodes()) {
+            //Sacamos el nombre de sus atributos
+            for (let nombre of elemento.getAttributeNames()) {
 
-                let hijo = elemento.childNodes;
+                //Recogemos el valor del atributo en función de su nombre
+                let valor = elemento.getAttribute(nombre);
 
-                console.log(hijo.getAttributeNode("id"));
+                //Lo mostramos
+                console.log(nombre, valor);
+
+            }
+
+            //Comprobamos si tienen hijos
+            if (elemento.hasChildNodes) {
+
+                //Recorremos los hijos de nuevo
+                for (j = 0; j < elemento.children.length; j++) {
+
+                    //Los guardamos
+                    let hijo = elemento.children[j];
+
+                    //Recorremos los atributos
+                    for (let nombreH of hijo.getAttributeNames()) {
+
+                        let valorH = hijo.getAttribute(nombreH);
+                        console.log(hijo.nodeName, nombreH, valorH);
+
+                    }
+
+                }
 
             }
         }
