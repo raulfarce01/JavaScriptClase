@@ -5,10 +5,54 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Descarga</title>
+    <style>
+        .imagen {
+            width: 500px;
+            margin-left: 100px;
+        }
+        
+        #capa {
+            display: flex;
+            position: absolute;
+            z-index: 4;
+            width: 95vw;
+            height: 90vh;
+            font-size: 2em;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
 </head>
 
 <body>
+
+    <div id="capa" style="color: white; background-color: black;">Cargando...</div>
+
+    <img src="https://source.unsplash.com/random" alt="topo-tamadre" class="imagen">
+    <img src="https://source.unsplash.com/random" alt="topo-tamadre" class="imagen">
+    <img src="https://source.unsplash.com/random" alt="topo-tamadre" class="imagen">
+    <img src="https://source.unsplash.com/random" alt="topo-tamadre" class="imagen">
+    <img src="https://source.unsplash.com/random" class="imagen" alt="topo-tamadre">
+
+
+    <script>
+        //Ejecutamos el evento una vez terminada la carga de imágenes
+        window.addEventListener("load", function() {
+
+            //Recogemos el body y lo almacenamos en una variable
+            let body = document.body;
+
+            //Recogemos el div en una variable
+            let capa = document.getElementById("capa");
+
+            //Una vez cargada las imágenes, borramos el div negro de carga
+            body.removeChild(capa);
+
+
+
+        })
+    </script>
 
 </body>
 
