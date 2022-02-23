@@ -5,10 +5,78 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Formulario COokies</title>
 </head>
 
 <body>
+
+    <form id="formu" action="#" method="post">
+
+        Nombre: <input id="nombreF" type='text' placeholder='Escribe tu nombre completo'>
+        <br> Correo: <input id="correoF" type='text ' placeholder='ejemplo@um.es '>
+        <br> Teléfono: <input id="tlfF" type='text ' placeholder='Ej. +34668899999 '>
+        <br> País: <input id="paisF" type='text '>
+
+        <br>
+        <input type='submit' value='Enviar '>
+
+    </form>
+
+    <script>
+        if (!document.cookie) {
+
+            if (document.getElementById('formu').submit) {
+
+                let nombre = document.getElementById("nombre").value;
+                let correo = document.getElementById("correo").value;
+                let tlf = document.getElementById("tlf").value;
+                let pais = document.getElementById("pais").value;
+
+                document.cookie = `name=${nombre}; max-duration=60*60*24*365`;
+                console.log("🚀 ~ file: index.html ~ line 40 ~ nombre", nombre)
+                document.cookie = `correo=${correo}; max-duration=60*60*24*365`;
+                console.log("🚀 ~ file: index.html ~ line 42 ~ correo", correo)
+                document.cookie = `tlf=${tlf}; max-duration=60*60*24*365`;
+                console.log("🚀 ~ file: index.html ~ line 44 ~ tlf", tlf)
+                document.cookie = `pais=${pais}; max-duration=60*60*24*365`;
+                console.log("🚀 ~ file: index.html ~ line 46 ~ pais", pais)
+
+            }
+
+        } else {
+
+            let cookie = document.cookie.split("; ");
+
+            var identifica = [];
+
+            for (let pedazo of cookie) {
+
+                let [nombre, valor] = pedazo.split("=");
+                console.log(document.cookie);
+
+                identifica[nombre] = valor;
+                console.log("🚀 ~ file: index.html ~ line 58 ~ valor", valor)
+                    //console.log("🚀 ~ file: index.html ~ line 58 ~ nombre", nombre)
+            }
+
+            let nombreF = document.getElementById("nombreF");
+            let correoF = document.getElementById("correoF");
+            let tlfF = document.getElementById("tlfF");
+            let paisF = document.getElementById("paisF");
+
+            let confirma = confirm("Hemos encontrando la información de su formulario. ¿Quiere rellenar el formulario con la misma?");
+
+            if (confirma) {
+
+                nombreF.innerHTML = `value=${identifica["name"]}`;
+                correoF.innerHTML = `value=${identifica["correo"]}`;
+                tlfF.innerHTML = `value=${identifica["tlf"]}`;
+                paisF.innerHTML = `value=${identifica["pais"]}`;
+
+            }
+
+        }
+    </script>
 
 </body>
 

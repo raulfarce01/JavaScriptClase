@@ -5,11 +5,40 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Visitas</title>
 </head>
 
 <body>
+    <script>
+        //En caso de que no existan cookies, mostramos el cuadro y creamos una nueva con las visitas en uno porque el usuario ha entrado por primera
+        if (!document.cookie) {
 
+            var acepta = confirm("Esta página utiliza cookies, si no está de acuerdo con el uso de las mismas no podrá accedes.");
+
+            document.cookie = `visitas=1; max-duration=60*60*24*365`;
+
+        } else {
+
+            //Separamos los atributos de la coockie
+            let array = document.cookie.split("; ");
+
+            //Recorremos los atributos
+            for (let cookie of array) {
+
+                //Los asignamos a variables donde nombre contiene el nombre de la cookie, y valor, el valor de la misma
+                let [nombre, valor] = cookie.split("=");
+                console.log(`La cookie "${nombre}" tiene el valor "${valor}"`);
+
+                //Almacenamos el valor incrementado en uno por la nueva visita hecha
+                contador = ++valor;
+
+            }
+
+            //Cambiamos el valor de la cookie y le asignamos el nuevo con la visita contada
+            document.cookie = `visitas=${contador}; max-duration=60*60*24*365`;
+
+        }
+    </script>
 </body>
 
 </html>
