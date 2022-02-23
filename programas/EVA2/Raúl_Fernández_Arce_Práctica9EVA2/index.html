@@ -21,10 +21,11 @@
     <script>
         //Recogemos la etiqueta HTML
         let etihtml = document.getElementsByTagName("html")[0];
+        recorre(etihtml);
         //console.log(etihtml.children.length);
 
         //Recorremos sus elementos en función de la cantidad de hijos que tenga
-        for (i = 0; i < etihtml.children.length; i++) {
+        /*for (i = 0; i < etihtml.children.length; i++) {
 
             //recogemos el hijo
             let elemento = etihtml.children[i];
@@ -60,6 +61,25 @@
                 }
 
             }
+        }*/
+
+        function recorre(elemento) {
+
+            for (j = 0; j < elemento.children.length; j++) {
+
+                //Los guardamos
+                let hijo = elemento.children[j];
+
+                //Recorremos los atributos
+                for (let nombreH of hijo.getAttributeNames()) {
+
+                    let valorH = hijo.getAttribute(nombreH);
+                    console.log(hijo.nodeName, nombreH, valorH);
+
+                }
+
+            }
+
         }
     </script>
 
