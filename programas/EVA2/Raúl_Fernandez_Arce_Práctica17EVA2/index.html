@@ -10,12 +10,12 @@
 
 <body>
 
-    <form id="formu" action="#" method="post">
+    <form id="formu" action="#" method="get">
 
-        Nombre: <input id="nombreF" type='text' placeholder='Escribe tu nombre completo'>
-        <br> Correo: <input id="correoF" type='text ' placeholder='ejemplo@um.es '>
-        <br> Teléfono: <input id="tlfF" type='text ' placeholder='Ej. +34668899999 '>
-        <br> País: <input id="paisF" type='text '>
+        Nombre: <input id="nombreF" type='text' placeholder='Escribe tu nombre completo' name="nombreF">
+        <br> Correo: <input id="correoF" type='text ' placeholder='ejemplo@um.es' name="correoF">
+        <br> Teléfono: <input id="tlfF" type='text ' placeholder='Ej. +34668899999' name="tlfF">
+        <br> País: <input id="paisF" type='text' name="paisF">
 
         <br>
         <input type='submit' value='Enviar '>
@@ -23,58 +23,109 @@
     </form>
 
     <script>
+        //Comprobamos que no haya cookies creadas para crearla, en caso de ya estar creadas, las llamamos
         if (!document.cookie) {
 
-            if (document.getElementById('formu').submit) {
+            //Esperamos a que se realice el submit del formulario
+            document.forms[0].addEventListener("submit", function(ev) {
 
-                let nombre = document.getElementById("nombre").value;
-                let correo = document.getElementById("correo").value;
-                let tlf = document.getElementById("tlf").value;
-                let pais = document.getElementById("pais").value;
+                //Asignamos el valor de la etiqueta nombreF que se recibe a una variable
+                let nombre = document.forms[0].elements[0].value;
+                console.log("🚀 ~ file: index.html ~ line 44 ~ nombreCook", nombre)
 
-                document.cookie = `name=${nombre}; max-duration=60*60*24*365`;
-                console.log("🚀 ~ file: index.html ~ line 40 ~ nombre", nombre)
-                document.cookie = `correo=${correo}; max-duration=60*60*24*365`;
-                console.log("🚀 ~ file: index.html ~ line 42 ~ correo", correo)
-                document.cookie = `tlf=${tlf}; max-duration=60*60*24*365`;
-                console.log("🚀 ~ file: index.html ~ line 44 ~ tlf", tlf)
-                document.cookie = `pais=${pais}; max-duration=60*60*24*365`;
-                console.log("🚀 ~ file: index.html ~ line 46 ~ pais", pais)
+                //Asignamos el valor de la etiqueta correoF que se recibe a una variable
+                let correo = document.forms[0].elements[1].value;
+                console.log("🚀 ~ file: index.html ~ line 47 ~ correoCook", correo)
 
-            }
+                //Asignamos el valor de la etiqueta tlfF que se recibe a una variable
+                let tlf = document.forms[0].elements[2].value;
+                console.log("🚀 ~ file: index.html ~ line 50 ~ tlfCook", tlf)
+
+                //Asignamos el valor de la etiqueta paisF que se recibe a una variable
+                let pais = document.forms[0].elements[3].value;
+                console.log("🚀 ~ file: index.html ~ line 53 ~ paisCook", pais)
+
+                //Creamos cada una de las cookies con sus valores y una duración de un año
+                document.cookie = `name=${nombre}; max-duration=60*60*24*7`;
+                document.cookie = `correo=${correo}; max-duration=60*60*24*7`;
+                document.cookie = `tlf=${tlf}; max-duration=60*60*24*7`;
+                document.cookie = `pais=${pais}; max-duration=60*60*24*7`;
+
+                console.log(document.cookie);
+
+                //Preguntamos si el usuario desea guardar las cookies
+                let guarda = confirm("¿Desea guardar la información?");
+
+                //Si no, las borramos
+                if (!guarda) {
+
+                    document.cookie = `name=${nombre}; max-age=0`;
+                    document.cookie = `correo=${correo}; max-age=0`;
+                    document.cookie = `tlf=${tlf}; max-age=0`;
+                    document.cookie = `pais=${pais}; max-age=0`;
+
+                }
+
+                //Sin poner esto no hacía el submit, por lo que he tenido que ponerlo, porque, de lo contrario, se guardaban las cookies pero no hacía el submit
+                let enviar = document.getElementById("formulario");
+                enviar.submit();
+
+
+            });
 
         } else {
 
+            //Rompemos las cookies del separador ;
             let cookie = document.cookie.split("; ");
+            //console.log("🚀 ~ file: index.html ~ line 67 ~ cookie", cookie)
+            //console.log(document.cookie);
 
+            //Creamos un array donde vamos a almacenar los valores de las cookies con sus respectivos nombres
             var identifica = [];
 
+            //Recorremos los valores de las cookies
             for (let pedazo of cookie) {
 
+                //Los almacenamos separando el =
                 let [nombre, valor] = pedazo.split("=");
                 console.log(document.cookie);
 
                 identifica[nombre] = valor;
-                console.log("🚀 ~ file: index.html ~ line 58 ~ valor", valor)
-                    //console.log("🚀 ~ file: index.html ~ line 58 ~ nombre", nombre)
+                //console.log("🚀 ~ file: index.html ~ line 77 ~ nombre", nombre)
+                //console.log("🚀 ~ file: index.html ~ line 58 ~ valor", valor)
+                //console.log("🚀 ~ file: index.html ~ line 58 ~ nombre", nombre)
             }
 
-            let nombreF = document.getElementById("nombreF");
-            let correoF = document.getElementById("correoF");
-            let tlfF = document.getElementById("tlfF");
-            let paisF = document.getElementById("paisF");
+            console.log(identifica);
 
-            let confirma = confirm("Hemos encontrando la información de su formulario. ¿Quiere rellenar el formulario con la misma?");
+            //Mostramos una ventana por si el usuario quiere poner la información recogida por las cookies
+            var confirma = confirm("Hemos encontrando la información de su formulario. ¿Quiere rellenar el formulario con la misma?");
+            console.log("🚀 ~ file: index.html ~ line 94 ~ confirma", confirma)
 
+            //En caso de que acepte añadimos los valores en las etiquetas
             if (confirma) {
 
-                nombreF.innerHTML = `value=${identifica["name"]}`;
-                correoF.innerHTML = `value=${identifica["correo"]}`;
-                tlfF.innerHTML = `value=${identifica["tlf"]}`;
-                paisF.innerHTML = `value=${identifica["pais"]}`;
+                let nombreF = document.getElementById("nombreF");
+                nombreF.setAttribute("value", identifica["name"]);
+
+                let correoF = document.getElementById("correoF");
+                correoF.setAttribute("value", identifica["correo"]);
+
+                let tlfF = document.getElementById("tlfF");
+                tlfF.setAttribute("value", identifica["tlf"]);
+
+                let paisF = document.getElementById("paisF");
+                paisF.setAttribute("value", identifica["pais"]);
 
             }
 
+            //Sin poner esto no hacía el submit, por lo que he tenido que ponerlo, porque, de lo contrario, se guardaban las cookies pero no hacía el submit
+            document.forms[0].addEventListener("submit", function(ev) {
+
+                let enviar = document.getElementById("formulario");
+                enviar.submit();
+
+            });
         }
     </script>
 
