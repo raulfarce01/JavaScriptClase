@@ -5,10 +5,59 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Promesas</title>
 </head>
 
 <body>
+
+    <button>Romper Promesa</button>
+
+    <p>Resultado: </p>
+
+    <script>
+        //Recogemos el botón para guardar el evento de click sobre el mismo a la hora de romper la promesa
+        var boton = document.getElementsByTagName("button")[0];
+        console.log("🚀 ~ file: index.html ~ line 17 ~ boton", boton)
+
+        //Pedimos al usuario el tiempo en milisegundos de la promesa
+        var ms = prompt("Escribe el tiempo en ms de la promesa");
+        creaPromesa(ms);
+
+
+        function creaPromesa(tiempo) {
+
+            //Creamos la promesa
+            var promesa = new Promise(function(res, rej) {
+
+                //Al final de la declaración, ponemos el tiempo que tardará la promesa en ejecutarse
+                let temporizador = setInterval(function() {
+                    //Mostramos que el tiempo se haya terminado sin interrupciones
+                    res("Tiemplo Concluido");
+
+                }, tiempo);
+
+                //Mandamos el mensaje de ruptura en caso de hacer click en el botón
+                boton.addEventListener("click", function() {
+                    rej("Sa roto");
+                })
+            })
+
+            //Si se ejecuta la promesa, escribimos que funciona
+            promesa.then(function(res2) {
+
+                document.getElementsByTagName("p")[0].innerHTML = "Resultado: funka";
+
+            });
+
+            //Si se rompe la promesa, escribimos que no funciona
+            promesa.catch(function(rej2) {
+
+                document.getElementsByTagName("p")[0].innerHTML = "Resultado: no funka";
+
+            });
+
+        }
+    </script>
 
 </body>
 
