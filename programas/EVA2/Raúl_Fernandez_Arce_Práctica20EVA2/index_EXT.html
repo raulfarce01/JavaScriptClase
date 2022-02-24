@@ -38,6 +38,16 @@
         let input3 = document.getElementById("tit");
         let input4 = document.getElementById("text");*/
 
+        //Decimos al usuario que se encuentra en la primera página
+        if (pag == 0) {
+            alert("Estás en la primera mágina");
+        }
+
+        //Decimos al usuario que se encuentra en la última página
+        if (pag == 99) {
+            alert("Estás en la primera mágina");
+        }
+
         //Recogemos todos los inputs que hemos creoado en el formulario
         let inputs = [document.getElementById("user"), document.getElementById("id"), document.getElementById("tit"), document.getElementById("text")];
 
@@ -127,7 +137,17 @@
 
             //Sumamos el número de página
             pag++;
-            console.log("🚀 ~ file: index.html ~ line 171 ~ resta ~ pag", pag)
+            console.log("🚀 ~ file: index.html ~ line 171 ~ resta ~ pag", pag);
+
+            //Decimos al usuario que se encuentra en la primera página
+            if (pag == 0) {
+                alert("Estás en la primera mágina");
+            }
+
+            //Decimos al usuario que se encuentra en la última página
+            if (pag == 99) {
+                alert("Estás en la primera mágina");
+            }
 
             fetch("http://jsonplaceholder.typicode.com/posts").then(respuesta => {
                 if (respuesta.ok) {
@@ -199,6 +219,16 @@
             cont = 0;
             pag--;
             console.log("🚀 ~ file: index.html ~ line 171 ~ resta ~ pag", pag)
+
+            //Decimos al usuario que se encuentra en la primera página
+            if (pag == 0) {
+                alert("Estás en la primera mágina");
+            }
+
+            //Decimos al usuario que se encuentra en la última página
+            if (pag == 99) {
+                alert("Estás en la primera mágina");
+            }
 
             fetch("http://jsonplaceholder.typicode.com/posts").then(respuesta => {
                 if (respuesta.ok) {
