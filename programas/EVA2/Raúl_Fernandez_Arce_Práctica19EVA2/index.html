@@ -43,17 +43,22 @@
             for (let clave in miJSON) {
 
                 let label = document.createElement("label");
+                console.log("🚀 ~ file: index.html ~ line 46 ~ fetch ~ label", label)
                 label.setAttribute("for", `${clave}`);
                 label.innerHTML = `${clave}: `;
                 console.log("🚀 ~ file: index.html ~ line 47 ~ fetch ~ clave", clave)
 
                 let input = document.createElement("input");
+                console.log("🚀 ~ file: index.html ~ line 52 ~ fetch ~ input", input)
                 input.setAttribute("name", `${clave}`);
                 input.setAttribute("id", `${clave}`);
                 input.setAttribute("value", `${miJSON[clave]}`);
-                formulario.appendChild(label);
 
-                document.forms[0].insertBefore(input, label);
+                let salto = document.createElement("br");
+
+                formulario.appendChild(label);
+                formulario.appendChild(input);
+                formulario.appendChild(salto);
 
             }
 
