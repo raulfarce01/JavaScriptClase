@@ -10,16 +10,15 @@
 
 <body>
 
-    <form action="#" method="get">
-
-
+    <form id="formulario" action="./index.html" method="get">
 
     </form>
 
     <script>
-        var inputs = "";
-        var formulario = document.forms[0];
+        //Recogemos el formulario y lo almacenamos en una variable
+        var formulario = document.getElementById("formulario");
 
+        //Recogemos el archivo JSON que tenemos en la misma carpeta
         fetch("./persona.json").then(respuesta => {
             if (respuesta.ok) {
                 return respuesta.json();
@@ -27,41 +26,45 @@
                 throw new Error("no sa encontrao");
             }
         }).then(miJSON => {
+            //Mostramos el JSON para comprobar que todo va bien
             console.log(miJSON);
 
-            /*formulario.innerHTML = `
-                <input type="text" name="dni" value="${miJSON.dni}"><br>
-                <input type="text" name="nombre" value="${miJSON.nombre}"><br>
-                <input type="text" name="direccion" value="${miJSON.direccion}"><br>
-                <input type="text" name="ciudad" value="${miJSON.ciudad}"><br>
-                <input type="text" name="email" value="${miJSON.email}"><br>
-            `;*/
-
-            var long = Object.keys(miJSON).length;
-            console.log("🚀 ~ file: index.html ~ line 40 ~ fetch ~ long", long)
-
+            //Recorremos las claves del JSON que hemos recibido
             for (let clave in miJSON) {
 
+                //Creamos una etiqueta label para cada input
                 let label = document.createElement("label");
-                console.log("🚀 ~ file: index.html ~ line 46 ~ fetch ~ label", label)
+                //console.log("🚀 ~ file: index.html ~ line 46 ~ fetch ~ label", label)
                 label.setAttribute("for", `${clave}`);
+                //Ponemos qué queremos que se coloque en el input tras esa etiqueta
                 label.innerHTML = `${clave}: `;
-                console.log("🚀 ~ file: index.html ~ line 47 ~ fetch ~ clave", clave)
+                //console.log("🚀 ~ file: index.html ~ line 47 ~ fetch ~ clave", clave)
 
+                //Creamos el input correspondiente a la etiqueta creada a partir de la clave del objeto JSON recibido
                 let input = document.createElement("input");
-                console.log("🚀 ~ file: index.html ~ line 52 ~ fetch ~ input", input)
+                //console.log("🚀 ~ file: index.html ~ line 52 ~ fetch ~ input", input)
+                //Le seteamos los atributos correspondientes al input, usando la clave para identificar el input en caso de ser necesario
                 input.setAttribute("name", `${clave}`);
                 input.setAttribute("id", `${clave}`);
+                //Le asignamos el valor a partir del contenido de la clave del objeto JSON que hemos recibido anteriormente
                 input.setAttribute("value", `${miJSON[clave]}`);
 
+                //Ponemos un salto de línea para que quede más bonito
                 let salto = document.createElement("br");
 
+                //Colocamos los tres elementos como hijos del formulario
                 formulario.appendChild(label);
                 formulario.appendChild(input);
                 formulario.appendChild(salto);
 
             }
 
+            //Creamos el botón submit del formulario al terminar de haber cargado todos los inputs del JSON
+            let submit = document.createElement("input");
+            //console.log("🚀 ~ file: index.html ~ line 66 ~ fetch ~ submit", submit)
+            submit.setAttribute("type", "submit");
+            submit.setAttribute("value", "Enviar");
+            formulario.appendChild(submit)
 
         })
     </script>
