@@ -5,11 +5,168 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Recoge JSON</title>
 </head>
 
 <body>
 
+    <form id="formulario" action="./index.html" method="get">
+
+        <label for="user">USER:</label>
+        <input type="text" name="user" id="user"><br>
+
+        <label for="id">ID:</label>
+        <input type="text" name="id" id="id"><br>
+
+        <label for="tit">TITULO:</label>
+        <input type="text" name="tit" id="tit"><br>
+
+        <label for="text">TEXTO:</label>
+        <input type="text" name="text" id="text"><br>
+
+    </form>
+
+    <script>
+        //Recogemos el formulario y lo almacenamos en una variable
+        var formulario = document.getElementById("formulario");
+        var pag = 0;
+
+        //Vamos a usar un contador para recorrer el array que vamos a generar en la siguiente línea
+        var cont = 0;
+
+        //Recogemos todos los inputs que hemos creoado en el formulario
+        let inputs = [document.getElementById("user"), document.getElementById("id"), document.getElementById("tit"), document.getElementById("text")];
+
+        //Recogemos el json de la página esa del ejercicio
+        fetch("http://jsonplaceholder.typicode.com/posts").then(respuesta => {
+            if (respuesta.ok) {
+                return respuesta.json();
+            } else {
+                throw new Error("no sa encontrao");
+            }
+        }).then(miJSON => {
+
+
+            //Recorremos las claves del JSON que hemos recibido
+            for (let clave in miJSON[pag]) {
+
+                //Asignamos el valor que contiene la clave según su posición
+                //cont es una variable para rellenar todos los inputs en orden
+                inputs[cont].setAttribute("value", `${miJSON[pag][clave]}`);
+                cont++;
+
+            }
+
+            //Creamos el botón de Anterior
+            var before = document.createElement("input");
+            before.setAttribute("type", "button");
+            before.setAttribute("value", "Anterior");
+            before.setAttribute("id", "before");
+            //Función para restar 1 al valor del JSON
+            before.setAttribute("onclick", "resta()");
+            formulario.appendChild(before)
+
+            //Creamos el botón de siguiente
+            var next = document.createElement("input");
+            next.setAttribute("type", "button");
+            next.setAttribute("value", "Siguiente");
+            next.setAttribute("id", "next");
+            //Función para sumar 1 al valor del JSON
+            next.setAttribute("onclick", "suma()");
+            formulario.appendChild(next)
+
+            console.log("🚀 ~ file: index.html ~ line 82 ~ next", next)
+            console.log("🚀 ~ file: index.html ~ line 84 ~ before", before)
+
+        })
+
+        function suma() {
+            //Volvemos el contador que vamos a usar para el array a 0 de nuevo
+            cont = 0;
+
+            //Sumamos el número de página
+            pag++;
+            console.log("🚀 ~ file: index.html ~ line 171 ~ resta ~ pag", pag)
+
+            //Recogemos el json de la página esa del ejercicio
+            fetch("http://jsonplaceholder.typicode.com/posts").then(respuesta => {
+                if (respuesta.ok) {
+                    return respuesta.json();
+                } else {
+                    throw new Error("no sa encontrao");
+                }
+            }).then(miJSON => {
+
+                for (let clave in miJSON[pag]) {
+
+                    inputs[cont].setAttribute("value", `${miJSON[pag][clave]}`);
+                    cont++;
+
+                }
+
+                before.setAttribute("type", "button");
+                before.setAttribute("value", "Anterior");
+                before.setAttribute("id", "before");
+                //Función para restar 1 al valor del JSON
+                before.setAttribute("onclick", "resta()");
+                formulario.appendChild(before)
+
+                next.setAttribute("type", "button");
+                next.setAttribute("value", "Siguiente");
+                next.setAttribute("id", "next");
+                //Función para sumar 1 al valor del JSON
+                next.setAttribute("onclick", "suma()");
+                formulario.appendChild(next)
+
+                console.log("🚀 ~ file: index.html ~ line 82 ~ next", next)
+                console.log("🚀 ~ file: index.html ~ line 84 ~ before", before)
+
+            })
+        }
+
+        function resta() {
+            cont = 0;
+            pag--;
+            console.log("🚀 ~ file: index.html ~ line 171 ~ resta ~ pag", pag)
+
+            fetch("http://jsonplaceholder.typicode.com/posts").then(respuesta => {
+                if (respuesta.ok) {
+                    return respuesta.json();
+                } else {
+                    throw new Error("no sa encontrao");
+                }
+            }).then(miJSON => {
+
+                //Recorremos las claves del JSON que hemos recibido
+                for (let clave in miJSON[pag]) {
+
+                    //Asignamos el valor que contiene la clave según su posición
+                    //cont es una variable para rellenar todos los inputs en orden
+                    inputs[cont].setAttribute("value", `${miJSON[pag][clave]}`);
+                    cont++;
+
+                }
+
+                before.setAttribute("type", "button");
+                before.setAttribute("value", "Anterior");
+                before.setAttribute("id", "before");
+                //Función para restar 1 al valor del JSON
+                before.setAttribute("onclick", "resta()");
+                formulario.appendChild(before)
+
+                next.setAttribute("type", "button");
+                next.setAttribute("value", "Siguiente");
+                next.setAttribute("id", "next");
+                //Función para sumar 1 al valor del JSON
+                next.setAttribute("onclick", "suma()");
+                formulario.appendChild(next)
+
+                console.log("🚀 ~ file: index.html ~ line 82 ~ next", next)
+                console.log("🚀 ~ file: index.html ~ line 84 ~ before", before)
+
+            });
+        }
+    </script>
 </body>
 
 </html>

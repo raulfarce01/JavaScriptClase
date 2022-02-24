@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recoge JSON</title>
+</head>
+
+<body>
+
+    <form id="formulario" action="./index.html" method="get">
+
+        <label for="user">USER:</label>
+        <input type="text" name="user" id="user"><br>
+
+        <label for="id">ID:</label>
+        <input type="text" name="id" id="id"><br>
+
+        <label for="tit">TITULO:</label>
+        <input type="text" name="tit" id="tit"><br>
+
+        <label for="text">TEXTO:</label>
+        <input type="text" name="text" id="text"><br>
+
+    </form>
+
+    <script>
+        //Recogemos el formulario y lo almacenamos en una variable
+        var formulario = document.getElementById("formulario");
+        var pag = 0;
+
+        //Vamos a usar un contador para recorrer el array que vamos a generar en la siguiente línea
+        var cont = 0;
+        /*let input1 = document.getElementById("user");
+        let input2 = document.getElementById("id");
+        let input3 = document.getElementById("tit");
+        let input4 = document.getElementById("text");*/
+
+        //Recogemos todos los inputs que hemos creoado en el formulario
+        let inputs = [document.getElementById("user"), document.getElementById("id"), document.getElementById("tit"), document.getElementById("text")];
+
+        //console.log("🚀 ~ file: index.html ~ line 21 ~ pag", pag)
+
+        //Recogemos el archivo JSON que tenemos en la misma carpeta
+        fetch("http://jsonplaceholder.typicode.com/posts").then(respuesta => {
+            if (respuesta.ok) {
+                return respuesta.json();
+            } else {
+                throw new Error("no sa encontrao");
+            }
+        }).then(miJSON => {
+            //Mostramos el JSON para comprobar que todo va bien
+            //console.log(miJSON);
+
+            //Recorremos las claves del JSON que hemos recibido
+            for (let clave in miJSON[pag]) {
+                //console.log("🚀 ~ file: index.html ~ line 35 ~ fetch ~ clave", clave)
+                //console.log("🚀 ~ file: index.html ~ line 52 ~ fetch ~ miJSON[pag][clave]", miJSON[pag][clave])
+
+                //Creamos una etiqueta label para cada input
+                //var label = document.createElement("label");
+                //console.log("🚀 ~ file: index.html ~ line 46 ~ fetch ~ label", label)
+                //label.setAttribute("for", `${clave}`);
+                //Ponemos qué queremos que se coloque en el input tras esa etiqueta
+                //label.innerHTML = `${clave}: `;
+                //console.log("🚀 ~ file: index.html ~ line 47 ~ fetch ~ clave", clave)
+
+                //Creamos el input correspondiente a la etiqueta creada a partir de la clave del objeto JSON recibido
+                //var input = document.createElement("input");
+                //console.log("🚀 ~ file: index.html ~ line 52 ~ fetch ~ input", input)
+                //Le seteamos los atributos correspondientes al input, usando la clave para identificar el input en caso de ser necesario
+                //input.setAttribute("name", `${clave}`);
+                //input.setAttribute("id", `${clave}`);
+                //Le asignamos el valor a partir del contenido de la clave del objeto JSON que hemos recibido anteriormente
+
+                //Asignamos el valor que contiene la clave según su posición
+                //cont es una variable para rellenar todos los inputs en orden
+                inputs[cont].setAttribute("value", `${miJSON[pag][clave]}`);
+                cont++;
+
+                //Ponemos un salto de línea para que quede más bonito
+                //var salto = document.createElement("br");
+
+                //Colocamos los tres elementos como hijos del formulario
+                //formulario.appendChild(label);
+                //formulario.appendChild(input);
+                //formulario.appendChild(salto);
+
+            }
+
+            //Creamos el botón de Anterior
+            var before = document.createElement("input");
+            before.setAttribute("type", "button");
+            before.setAttribute("value", "Anterior");
+            before.setAttribute("id", "before");
+            //Función para restar 1 al valor del JSON
+            before.setAttribute("onclick", "resta()");
+            formulario.appendChild(before)
+                //console.log("🚀 ~ file: index.html ~ line 71 ~ fetch ~ before", before)
+
+            //Creamos el botón submit del formulario al terminar de haber cargado todos los inputs del JSON
+
+            //Creamos el botón de siguiente
+            var next = document.createElement("input");
+            //console.log("🚀 ~ file: index.html ~ line 66 ~ fetch ~ submit", submit)
+            next.setAttribute("type", "button");
+            next.setAttribute("value", "Siguiente");
+            next.setAttribute("id", "next");
+
+            //Función para sumar 1 al valor del JSON
+            next.setAttribute("onclick", "suma()");
+            formulario.appendChild(next)
+                //console.log("🚀 ~ file: index.html ~ line 79 ~ fetch ~ next", next)
+
+            console.log("🚀 ~ file: index.html ~ line 82 ~ next", next)
+            console.log("🚀 ~ file: index.html ~ line 84 ~ before", before)
+
+        })
+
+        function suma() {
+            console.log("tu puta madre");
+
+            //Volvemos el contador que vamos a usar para el array a 0 de nuevo
+            cont = 0;
+
+            //Sumamos el número de página
+            pag++;
+            console.log("🚀 ~ file: index.html ~ line 171 ~ resta ~ pag", pag)
+
+            fetch("http://jsonplaceholder.typicode.com/posts").then(respuesta => {
+                if (respuesta.ok) {
+                    return respuesta.json();
+                } else {
+                    throw new Error("no sa encontrao");
+                }
+            }).then(miJSON => {
+                //Mostramos el JSON para comprobar que todo va bien
+                //console.log(miJSON);
+
+                //Recorremos las claves del JSON que hemos recibido
+                for (let clave in miJSON[pag]) {
+                    //console.log("🚀 ~ file: index.html ~ line 35 ~ fetch ~ clave", clave)
+                    //console.log("🚀 ~ file: index.html ~ line 52 ~ fetch ~ miJSON[pag][clave]", miJSON[pag][clave])
+
+                    //Creamos una etiqueta label para cada input
+                    //console.log("🚀 ~ file: index.html ~ line 46 ~ fetch ~ label", label)
+                    //label.setAttribute("for", `${clave}`);
+                    //Ponemos qué queremos que se coloque en el input tras esa etiqueta
+                    //label.innerHTML = `${clave}: `;
+                    //console.log("🚀 ~ file: index.html ~ line 47 ~ fetch ~ clave", clave)
+
+                    //Creamos el input correspondiente a la etiqueta creada a partir de la clave del objeto JSON recibido
+                    //console.log("🚀 ~ file: index.html ~ line 52 ~ fetch ~ input", input)
+                    //Le seteamos los atributos correspondientes al input, usando la clave para identificar el input en caso de ser necesario
+                    //input.setAttribute("name", `${clave}`);
+                    //input.setAttribute("id", `${clave}`);
+                    //Le asignamos el valor a partir del contenido de la clave del objeto JSON que hemos recibido anteriormente
+
+                    inputs[cont].setAttribute("value", `${miJSON[pag][clave]}`);
+                    cont++;
+
+                    //Ponemos un salto de línea para que quede más bonito
+
+                    //Colocamos los tres elementos como hijos del formulario
+                    //formulario.appendChild(label);
+                    //formulario.appendChild(input);
+                    //formulario.appendChild(salto);
+
+                }
+
+                before.setAttribute("type", "button");
+                before.setAttribute("value", "Anterior");
+                before.setAttribute("id", "before");
+                //Función para restar 1 al valor del JSON
+                before.setAttribute("onclick", "resta()");
+                formulario.appendChild(before)
+                    //console.log("🚀 ~ file: index.html ~ line 71 ~ fetch ~ before", before)
+
+                //Creamos el botón submit del formulario al terminar de haber cargado todos los inputs del JSON
+                //console.log("🚀 ~ file: index.html ~ line 66 ~ fetch ~ submit", submit)
+                next.setAttribute("type", "button");
+                next.setAttribute("value", "Siguiente");
+                next.setAttribute("id", "next");
+                //Función para sumar 1 al valor del JSON
+                next.setAttribute("onclick", "suma()");
+                formulario.appendChild(next)
+                    //console.log("🚀 ~ file: index.html ~ line 79 ~ fetch ~ next", next)
+
+                console.log("🚀 ~ file: index.html ~ line 82 ~ next", next)
+                console.log("🚀 ~ file: index.html ~ line 84 ~ before", before)
+
+            })
+        }
+
+        function resta() {
+            console.log("la mía");
+            cont = 0;
+            pag--;
+            console.log("🚀 ~ file: index.html ~ line 171 ~ resta ~ pag", pag)
+
+            fetch("http://jsonplaceholder.typicode.com/posts").then(respuesta => {
+                if (respuesta.ok) {
+                    return respuesta.json();
+                } else {
+                    throw new Error("no sa encontrao");
+                }
+            }).then(miJSON => {
+                //Mostramos el JSON para comprobar que todo va bien
+                //console.log(miJSON);
+
+                //Recorremos las claves del JSON que hemos recibido
+                for (let clave in miJSON[pag]) {
+                    //console.log("🚀 ~ file: index.html ~ line 35 ~ fetch ~ clave", clave)
+                    //console.log("🚀 ~ file: index.html ~ line 52 ~ fetch ~ miJSON[pag][clave]", miJSON[pag][clave])
+
+                    //Creamos una etiqueta label para cada input
+                    //console.log("🚀 ~ file: index.html ~ line 46 ~ fetch ~ label", label)
+                    //label.setAttribute("for", `${clave}`);
+                    //Ponemos qué queremos que se coloque en el input tras esa etiqueta
+                    //label.innerHTML = `${clave}: `;
+                    //console.log("🚀 ~ file: index.html ~ line 47 ~ fetch ~ clave", clave)
+
+                    //Creamos el input correspondiente a la etiqueta creada a partir de la clave del objeto JSON recibido
+                    //console.log("🚀 ~ file: index.html ~ line 52 ~ fetch ~ input", input)
+                    //Le seteamos los atributos correspondientes al input, usando la clave para identificar el input en caso de ser necesario
+                    //input.setAttribute("name", `${clave}`);
+                    //input.setAttribute("id", `${clave}`);
+                    //Le asignamos el valor a partir del contenido de la clave del objeto JSON que hemos recibido anteriormente
+
+                    //Asignamos el valor que contiene la clave según su posición
+                    //cont es una variable para rellenar todos los inputs en orden
+                    inputs[cont].setAttribute("value", `${miJSON[pag][clave]}`);
+                    cont++;
+
+                    //Ponemos un salto de línea para que quede más bonito
+
+                    //Colocamos los tres elementos como hijos del formulario
+                    //formulario.appendChild(label);
+                    //formulario.appendChild(input);
+                    //formulario.appendChild(salto);
+
+                }
+
+                before.setAttribute("type", "button");
+                before.setAttribute("value", "Anterior");
+                before.setAttribute("id", "before");
+                //Función para restar 1 al valor del JSON
+                before.setAttribute("onclick", "resta()");
+                formulario.appendChild(before)
+                    //console.log("🚀 ~ file: index.html ~ line 71 ~ fetch ~ before", before)
+
+                //console.log("🚀 ~ file: index.html ~ line 66 ~ fetch ~ submit", submit)
+                next.setAttribute("type", "button");
+                next.setAttribute("value", "Siguiente");
+                next.setAttribute("id", "next");
+                //Función para sumar 1 al valor del JSON
+                next.setAttribute("onclick", "suma()");
+                formulario.appendChild(next)
+                    //console.log("🚀 ~ file: index.html ~ line 79 ~ fetch ~ next", next)
+
+                console.log("🚀 ~ file: index.html ~ line 82 ~ next", next)
+                console.log("🚀 ~ file: index.html ~ line 84 ~ before", before)
+
+            });
+        }
+    </script>
+</body>
+
+</html>

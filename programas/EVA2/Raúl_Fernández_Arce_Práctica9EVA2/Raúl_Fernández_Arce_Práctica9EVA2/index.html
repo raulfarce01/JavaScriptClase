@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica 9</title>
+</head>
+
+<body>
+
+    <section id="s1" class="seccion">
+        <h1 id="titulo" class="titulo">Título</h1>
+        <p class="texto">Ejemplo de documento <strong>Visión en árbol</strong></p>
+    </section>
+    <section id="s2" class="seccion">
+        <p>Aquí solo hay texto</p>
+    </section>
+
+    <script>
+        //Recogemos la etiqueta HTML
+        let html = document.getElementsByTagName("html")[0];
+
+        //Llamamos a la función recorre que se encarga de recorrer todos los elementos del html a partir del indicado por parámetro
+        recorre(html);
+
+        function recorre(elemento) {
+
+            //Recorremos todos los hijos
+            for (let i = 0; i < elemento.children.length; i++) {
+                //console.log("🚀 ~ file: index.html ~ line 29 ~ recorre ~ elemento.children.length", elemento.children.length)
+
+                //Almacenamos los hijos en una variable
+                let hijo = elemento.children[i];
+
+                //Recorremos los hijos de los hijos
+                recorre(hijo);
+                //console.log("🚀 ~ file: index.html ~ line 31 ~ recorre ~ hijo", hijo);
+
+                //En caso de que tenga atributos, los mostramos; en caso de que no, mostramos solo el nombre de la etiqueta
+                if (hijo.hasAttributes()) {
+
+                    //Recogemos el nombre de los atributos de la etiqueta
+                    for (let nombre of hijo.getAttributeNames()) {
+                        //console.log("🚀 ~ file: index.html ~ line 34 ~ recorre ~ nombre", nombre)
+
+                        //Recogemos el valor a partir del nombre
+                        //nombre -> id | valor -> 1 POR EJEMPLO
+                        let valor = hijo.getAttribute(nombre);
+                        console.log(hijo.nodeName, "=>", nombre, " ", valor);
+
+                    }
+                } else {
+                    console.log(hijo.nodeName);
+                }
+            }
+        }
+    </script>
+
+</body>
+
+</html>
