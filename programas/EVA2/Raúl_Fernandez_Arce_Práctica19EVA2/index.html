@@ -5,11 +5,50 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>JSON</title>
 </head>
 
 <body>
 
+    <form action="#" method="get">
+
+
+
+    </form>
+
+    <script>
+        var inputs = "";
+        var formulario = document.forms[0];
+
+        fetch("./persona.json").then(respuesta => {
+            if (respuesta.ok) {
+                return respuesta.json();
+            } else {
+                throw new Error("no sa encontrao");
+            }
+        }).then(miJSON => {
+            console.log(miJSON);
+
+            /*formulario.innerHTML = `
+                <input type="text" name="dni" value="${miJSON.dni}"><br>
+                <input type="text" name="nombre" value="${miJSON.nombre}"><br>
+                <input type="text" name="direccion" value="${miJSON.direccion}"><br>
+                <input type="text" name="ciudad" value="${miJSON.ciudad}"><br>
+                <input type="text" name="email" value="${miJSON.email}"><br>
+            `;*/
+
+            var long = Object.keys(miJSON).length;
+            console.log("🚀 ~ file: index.html ~ line 40 ~ fetch ~ long", long)
+
+            for (let clave in miJSON) {
+
+                document.createElement()
+
+            }
+
+
+        })
+    </script>
 </body>
 
 </html>
